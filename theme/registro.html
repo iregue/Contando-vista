@@ -17,20 +17,53 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="assets/js/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--<script src="assets/js/jquery-validate/dist/jquery.validate.js"></script>-->
+    <!--https://1000hz.github.io/bootstrap-validator/-->
+    <script src="assets/js/validator/validator.js"></script>
+    <!--<script src="assets/js/modernizr.js"></script>-->
+    <!-- Pluging para cookies-->
+    <script src="assets/js/jquery.cookie.js"></script>
+
+
+
+
+
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css"/>
+
+    <!--
+        RTL version
+    -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.rtl.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.rtl.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.rtl.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.rtl.min.css"/>
+
+
+
+
+
 </head>
 <body>
-<!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -45,13 +78,13 @@
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="count.html">Registro</a></li>
+                <li class="active"><a href="count.html">Registro</a></li>
                 <li><a href="stats.html">Analizar</a></li>
                 <li><a href="about.html">Acerca de</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Últimos eventos <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="perseidas16.html">Perseidas 2016</a></li>
+                        <li><a href="perseidas16.html">Perseidas 2016</a></li>
                         <li><a href="#">Perseidas 2015</a></li>
                     </ul>
                 </li>
@@ -59,31 +92,34 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
+<!-- ===========================FORMULARIO========================pattern="^[\d.]+$" -->
+<div id="service">
+<div class="container mtb">
+    <div class="row">
+        <a href="count.html"><i class="fa fa-cogs" aria-hidden="true">Ajustes</i></a>
+    </div>
+    <div class="row">
+        Count:<span id="contador">0</span>
+        Latitude:<span id="latitud_1">0</span>
+        Longitude:<span id="longitud_1">0</span>
+    </div>
+    <div class="row centered">
+        <img class="img-responsive" src="assets/img/button.png" id="imgbutton" alt="">
+    </div>
+</div>
+</div>
 
+<!-- ===========================FORMULARIO======================== -->
 
-
-<!-- *****************************************************************************************************************
-	 FOOTER
-	 ***************************************************************************************************************** -->
 <div id="footerwrap">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <h4>About</h4>
                 <div class="hline-w"></div>
-                <p>Esta aplicación ha sido creada para dar soporte a eventos astronómicos con la que se pueda llevar un seguimiento de los bólidos avistados. <br><a href="about.html">Más información</a></p>
+                <p>Esta aplicación ha sido creada para dar soporte a eventos astronómicos con la que se pueda llevar un seguimiento de los bólidos avistados.<br> <a href="about.html">Más información</a></p>
+
             </div>
-            <!--<div class="col-lg-4">
-                <h4>Social Links</h4>
-                <div class="hline-w"></div>
-                <p>
-                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-tumblr"></i></a>
-                </p>
-            </div>-->
             <div class="col-lg-6">
                 <h4>Donde estamos</h4>
                 <div class="hline-w"></div>
@@ -99,9 +135,8 @@
 </div><! --/footerwrap -->
 
 <!-- Bootstrap core JavaScript
-================================================== -->
+   ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/retina-1.1.0.js"></script>
 <script src="assets/js/jquery.hoverdir.js"></script>
@@ -109,6 +144,29 @@
 <script src="assets/js/jquery.prettyPhoto.js"></script>
 <script src="assets/js/jquery.isotope.min.js"></script>
 <script src="assets/js/custom.js"></script>
+
+<script>
+    var newValor = 0;
+    $('#latitud_1').text($.cookie('latitude'));
+    $('#longitud_1').text($.cookie('longitude'));
+    $('#imgbutton').click(function () {
+       // alert('latitud:' + $.cookie('latitude') + 'longitud' + $.cookie('longitude'));
+        newValor = newValor + 1;
+        $('#contador').text(newValor);
+
+
+    });
+/*
+    $('#imgbutton').mouseup(function () {
+        alert('latitud:'+ $.cookie('latitude')+ 'longitud'+ $.cookie('longitude'));
+
+    });
+    $('#imgbutton').mousedown(function () {
+        $('#imgbutton').attr('src', "assets/img/button_pressed.png")
+
+    });
+    */
+</script>
 
 </body>
 </html>

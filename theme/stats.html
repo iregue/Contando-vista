@@ -27,6 +27,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/validator/validator.js"></script>
     <script src="assets/js/modernizr.js"></script>
 </head>
 <body>
@@ -61,7 +62,7 @@
         </div>
     </div>
 <!--===================================FORMULARIO=====================================-->
-    <div id="form">
+
         <div class="container mtb">
             <div class="row col-md-6 col-md-offset-3">
                 <h2>Busqueda de bólidos</h2><br>
@@ -77,8 +78,8 @@
                     <input type="text" class="form-control" placeholder="">
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
-                    <label>Distancia máxima a [Latitud,Longitud]</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <label>Distancia máxima a [Latitud,Longitud] en Km</label>
+                    <input type="text" class="form-control" pattern="^[\d.]+$" placeholder="" required>
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
                     <label>Fecha de inicio</label>
@@ -93,7 +94,6 @@
                 </div>
             </form>
         </div>
-    </div>
 <!-- *****************************************************************************************************************
 FOOTER
 ***************************************************************************************************************** -->
@@ -141,8 +141,5 @@ FOOTER
     <script src="assets/js/jquery.prettyPhoto.js"></script>
     <script src="assets/js/jquery.isotope.min.js"></script>
     <script src="assets/js/custom.js"></script>
-
-
-    <script>
 </body>
 </html>
