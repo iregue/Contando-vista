@@ -78,7 +78,7 @@
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Inicio</a></li>
-                <li class="active"><a href="count.html">Registro</a></li>
+                <li class="active"><a href="registro.html">Registro</a></li>
                 <li><a href="stats.html">Analizar</a></li>
                 <li><a href="about.html">Acerca de</a></li>
                 <li class="dropdown">
@@ -92,23 +92,27 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
-<!-- ===========================FORMULARIO========================pattern="^[\d.]+$" -->
-<div id="service">
-<div class="container mtb">
+<!-- ===========================FORMULARIO========================-->
+<div id="service-2">
+<div class="container">
+    <div class="row col-md-12 col-md-offset-3">
+        <h2>Registro de bólidos</h2>
+    </div><br>
     <div class="row">
-        <a href="count.html"><i class="fa fa-cogs" aria-hidden="true">Ajustes</i></a>
+        <a href="count.html"><i class="fa fa-cogs" aria-hidden="true"> Ajustes</i></a>
     </div>
-    <div class="row">
-        Count:<span id="contador">0</span>
-        Latitude:<span id="latitud_1">0</span>
-        Longitude:<span id="longitud_1">0</span>
+
+    <div class="row centered">
+        Count:<span id="contador">0</span><br>
+        Latitude:<span id="latitud_1">0</span><br>
+        Longitude:<span id="longitud_1">0</span><br>
     </div>
     <div class="row centered">
-        <img class="img-responsive" src="assets/img/button.png" id="imgbutton" alt="">
+        <!--<img class="img-responsive" src="assets/img/button.png" id="imgbutton" alt="">-->
+        <div id="imgbutton"></div>
     </div>
 </div>
 </div>
-
 <!-- ===========================FORMULARIO======================== -->
 
 <div id="footerwrap">
@@ -118,7 +122,6 @@
                 <h4>About</h4>
                 <div class="hline-w"></div>
                 <p>Esta aplicación ha sido creada para dar soporte a eventos astronómicos con la que se pueda llevar un seguimiento de los bólidos avistados.<br> <a href="about.html">Más información</a></p>
-
             </div>
             <div class="col-lg-6">
                 <h4>Donde estamos</h4>
@@ -151,11 +154,19 @@
     $('#longitud_1').text($.cookie('longitude'));
     $('#imgbutton').click(function () {
        // alert('latitud:' + $.cookie('latitude') + 'longitud' + $.cookie('longitude'));
-        newValor = newValor + 1;
-        $('#contador').text(newValor);
-
+        if($.cookie('latitude')==null|| $.cookie('longitude')==null)
+        {
+            return alert('Introduzca su ubicación. Vaya a ajustes');
+        }
+        else
+        {
+            newValor = newValor + 1;
+            $('#contador').text(newValor);
+        }
 
     });
+
+
 /*
     $('#imgbutton').mouseup(function () {
         alert('latitud:'+ $.cookie('latitude')+ 'longitud'+ $.cookie('longitude'));
@@ -165,8 +176,12 @@
         $('#imgbutton').attr('src', "assets/img/button_pressed.png")
 
     });
+ $('#prueba').click(function () {
+ $('#prueba').attr('src', "assets/img/button.png")
+
+ });
+
     */
 </script>
-
 </body>
 </html>
