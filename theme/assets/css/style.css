@@ -280,6 +280,9 @@ a:focus {
 	background-image: url("../img/button.png");
 	height: 310px;
 	width: 305px;
+	left:50%;
+	top:20%;
+	margin:-75px 0 0 -135px;
 }
 #imgbutton:active {
 	background-image: url("../img/button_pressed.png");
