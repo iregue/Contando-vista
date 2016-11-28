@@ -104,8 +104,8 @@
 
     <div class="row centered">
         Count:<span id="contador">0</span><br>
-        Latitude:<span id="latitud_1">0</span><br>
-        Longitude:<span id="longitud_1">0</span><br>
+        Latitude:<span id="latitud_1">-</span><br>
+        Longitude:<span id="longitud_1">-</span><br>
     </div>
     <div class="row centered">
         <!--<img class="img-responsive" src="assets/img/button.png" id="imgbutton" alt="">-->
@@ -160,10 +160,20 @@
         }
         else
         {
+            $.post("http://localhost/api/observations/", {lat:$.cookie('latitude'),lon:$.cookie('longitude')},function(){
+            })
+            .done(function () {
+            alert('succes');
+        })
+            .fail(function () {
+            alert('fail');
+        })
+            .always(function () {
+            alert('always');
+        })
             newValor = newValor + 1;
             $('#contador').text(newValor);
         }
-
     });
 
 
