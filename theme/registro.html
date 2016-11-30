@@ -30,6 +30,7 @@
     <!--<script src="assets/js/modernizr.js"></script>-->
     <!-- Pluging para cookies-->
     <script src="assets/js/jquery.cookie.js"></script>
+    <script src="assets/js/modernizr.js"></script>
 
 
 
@@ -95,7 +96,7 @@
 <!-- ===========================FORMULARIO========================-->
 <div id="service-2">
 <div class="container">
-    <div class="row col-md-12 col-md-offset-3">
+    <div class="row col-md-9 col-md-offset-3">
         <h2>Registro de bólidos</h2>
     </div><br>
     <div class="row">
@@ -106,7 +107,7 @@
         <br><br><br>
 </div>
     <div class="row centered col-md-12">
-        <!--<img class="img-responsive" src="assets/img/button.png" id="imgbutton" alt="">-->
+
         <div id="imgbutton"></div>
     </div>
     <div class="row centered col-md-12">
@@ -153,8 +154,10 @@
 
 <script>
     var newValor = 0;
-    $('#latitud_1').text($.cookie('latitude'));
-    $('#longitud_1').text($.cookie('longitude'));
+    if($.cookie('latitude')!=null|| $.cookie('longitude')!=null){
+        $('#latitud_1').text($.cookie('latitude'));
+        $('#longitud_1').text($.cookie('longitude'));
+    }
     $('#imgbutton').click(function () {
        // alert('latitud:' + $.cookie('latitude') + 'longitud' + $.cookie('longitude'));
         if($.cookie('latitude')==null|| $.cookie('longitude')==null)
