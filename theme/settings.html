@@ -81,6 +81,7 @@
                     <li><a href="registro.html">Registro</a></li>
                     <li><a href="stats.html">Analizar</a></li>
                     <li><a href="about.html">Acerca de</a></li>
+                    <li class="active"><a href="settings.html">Ajustes</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Últimos eventos <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -108,16 +109,20 @@
                     <input type="text" name="longitud" id="longitud" data-error="Introduzca una longitud en formato correcto" pattern="\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" class="form-control" placeholder="" required>
                     <div class="help-block with-errors">Introduzca una longitud en formato correcto</div>
                 </div>
-                <div id="aux1" class="form-group col-md-6 col-md-offset-3">
+                <div class="row col-md-12 col-md-offset-3">
+                    <button type="button" onclick="getGPS()" id= "btn-2" class="btn btn-primary btn-md">Usar GPS del dispositivo</button>
                 </div>
+                <div class="form-group col-md-6 col-md-offset-3">
+                </div>
+
                 <div class="row col-md-6 col-md-offset-3">
                     <button type="submit" onclick="addLocation()" id= "btn-1" class="btn btn-danger btn-lg">Guardar</button>
                 </div>
-                <div class="row col-md-6 col-md-offset-3">
-                    <br><a href="registro.html"><i class="fa fa-arrow-left fa-2x" aria-hidden="true">Volver</i></a>
-                    
+                <div class="form-group col-md-6 col-md-offset-3">
                 </div>
-                <button type="button" onclick="getGPS()" id= "btn-2" class="btn btn-danger btn-lg">GetGPS</button>
+                <div class="row col-md-6 col-md-offset-3">
+                    <a href="registro.html"><i class="fa fa-arrow-left fa-2x" aria-hidden="true">Volver</i></a>
+                </div>
             </form>
         </div>
 
@@ -127,13 +132,19 @@
     <div id="footerwrap">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <h4>About</h4>
+                <div class="col-lg-4">
+                    <h4>Acerca de</h4>
                     <div class="hline-w"></div>
-                    <p>Esta aplicación ha sido creada para dar soporte a eventos astronómicos con la que se pueda llevar un seguimiento de los bólidos avistados.<br> <a href="about.html">Más información</a></p>
-
+                    <p>Esta aplicación ha sido creada para dar soporte a eventos astronómicos con la que se pueda llevar un seguimiento de los bólidos avistados. <br><a href="about.html">Más información</a></p>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
+                    <h4>Desarrollador</h4>
+                    <div class="hline-w"></div>
+                    <p>Ignacio Regueiro Tuñon alumno de la Escuela Técnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid ha realizado esta aplicación como trabajo de fin de grado.
+                        <br><a href="https://twitter.com/IgnaRegue"><i class="fa fa-twitter"></i></a>
+                    </p>
+                </div>
+                <div class="col-lg-4">
                     <h4>Donde estamos</h4>
                     <div class="hline-w"></div>
                     <p>
