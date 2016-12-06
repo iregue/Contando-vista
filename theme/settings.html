@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,40 +30,6 @@
     <!--<script src="assets/js/modernizr.js"></script>-->
     <!-- Pluging para cookies-->
     <script src="assets/js/jquery.cookie.js"></script>
-
-    <!--<script src="assets/js/bootstrap-formhelpers.js"></script>
-    <script src="assets/js/bootstrap-formhelpers-countries.js"></script>-->
-
-
-
- 
-
-    <!-- JavaScript -->
-    <script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.min.css"/>
-    <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.min.css"/>
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css"/>
-
-    <!--
-        RTL version
-    -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.rtl.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.rtl.min.css"/>
-    <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.rtl.min.css"/>
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.rtl.min.css"/>
-
-
-
-
 
 </head>
 <body>
@@ -122,7 +88,7 @@
 
                 <div class="form-group has-feedback col-md-6 col-md-offset-3">
                     <label for="pais">País</label>
-                    <select name="pais" id="pais" class="form-control" placeholder="Spain" >
+                    <select name="pais" id="pais" class="form-control" placeholder="" required>
                         <option value="Spain">Spain</option>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
@@ -417,7 +383,6 @@
                         28660-Madrid<br/>
                     </p>
                 </div>
-
             </div><! --/row -->
         </div><! --/container -->
     </div><! --/footerwrap -->
@@ -440,10 +405,12 @@
         {
             var _latitud = $('#latitud').val();
             var _longitude = $('#longitud').val();
+            var _pais = $('#pais').val();
 
             $.cookie('latitude', _latitud);
             $.cookie('longitude', _longitude);
-           // alert(document.cookie);
+            $.cookie('pais', _pais);
+           //alert(document.cookie);
             }
 
 
@@ -494,6 +461,7 @@
 
         $('#latitud').val($.cookie('latitude'));
         $('#longitud').val($.cookie('longitude'));
+        $('#pais').val($.cookie('pais'));
     </script>
 
 </body>

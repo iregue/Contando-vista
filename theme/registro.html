@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,38 +31,6 @@
     <!-- Pluging para cookies-->
     <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/js/modernizr.js"></script>
-
-
-
-
-
-    <!-- JavaScript -->
-    <script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.min.css"/>
-    <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.min.css"/>
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css"/>
-
-    <!--
-        RTL version
-    -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.rtl.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.rtl.min.css"/>
-    <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.rtl.min.css"/>
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.rtl.min.css"/>
-
-
-
-
-
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -112,9 +80,11 @@
         <div id="imgbutton"></div>
     </div>
     <div class="row centered col-md-12">
-        Count:<span id="contador">0</span><br>
-        Latitude:<span id="latitud_1">-</span><br>
-        Longitude:<span id="longitud_1">-</span><br>
+        <h4>Estrellas vistas: <span id="contador">0</span></h4>
+        <h4>Latitude: <span id="latitud_1">-</span><br></h4>
+        <h4>Longitude: <span id="longitud_1">-</span><br></h4>
+        <h4>País: <span id="pais_1">-</span><br></h4>
+
     </div>
 </div>
 </div>
@@ -162,9 +132,10 @@
 
 <script>
     var newValor = 0;
-    if($.cookie('latitude')!=null|| $.cookie('longitude')!=null){
+    if($.cookie('latitude')!=null|| $.cookie('longitude')!=null || $.cookie('pais')){
         $('#latitud_1').text($.cookie('latitude'));
         $('#longitud_1').text($.cookie('longitude'));
+        $('#pais_1').text($.cookie('pais'));
     }
     $('#imgbutton').click(function () {
        // alert('latitud:' + $.cookie('latitude') + 'longitud' + $.cookie('longitude'));
@@ -174,9 +145,11 @@
         }
         else
         {
-            $.post("http://localhost/api/observations/", {lat:$.cookie('latitude'),lon:$.cookie('longitude')},function(){
+            $.post("http://localhost/api/observations/", {lat:$.cookie('latitude'),lon:$.cookie('longitude'),country:$.cookie('pais')},function(){
             })
             .done(function () {
+                newValor = newValor + 1;
+                $('#contador').text(newValor);
             alert('succes');
         })
             .fail(function () {
@@ -185,8 +158,7 @@
             .always(function () {
             alert('always');
         })
-            newValor = newValor + 1;
-            $('#contador').text(newValor);
+
         }
     });
 
