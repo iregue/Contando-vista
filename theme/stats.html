@@ -95,7 +95,7 @@
                     <input type="text" class="form-control" placeholder="">
                 </div>
                 <div class="row col-md-6 col-md-offset-3">
-                    <button type="button" class="btn btn-danger btn-lg">Enviar</button>
+                    <button type="submit" onclick="getData()" class="btn btn-danger btn-lg">Enviar</button>
                 </div>
             </form>
             <br>
@@ -184,9 +184,19 @@
         //    style="width: 310px; height: 310px;
 
     }
+
     </script>
     <script type="text/javascript">
         window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-bottom"};
     </script>
+<script>
+    /*function getData() {
+        $.get( "http://localhost/api/observations/", function( data ) {
+            $( "body" )
+                    .append( "Name: " + data.name ) // John
+                    .append( "Time: " + data.time ); //  2pm
+        }, "json" );
+    }*/
+</script>
 </body>
 </html>
