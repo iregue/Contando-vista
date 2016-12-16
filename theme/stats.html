@@ -18,9 +18,7 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -30,8 +28,11 @@
     <script src="assets/js/validator/validator.js"></script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- Pluging para cookies-->
+    <script src="assets/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
     <!-- End Cookie Consent plugin -->
+
 
 </head>
 <body>
@@ -76,23 +77,23 @@
             <form>
                 <div class="form-group col-md-6 col-md-offset-3">
                     <label>Latitud</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" name="latitude" id="latitude" class="form-control" placeholder="">
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
                     <label>Longitud</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" name="longitude" id="longitude" class="form-control" placeholder="">
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
                     <label>Distancia máxima a [Latitud,Longitud] en Km</label>
-                    <input type="text" class="form-control" pattern="^[\d.]+$" placeholder="" required>
+                    <input type="text" name="distance" id="distance" class="form-control" pattern="^[\d.]+$" placeholder="" >
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
                     <label>Fecha de inicio</label>
-                    <input type="text" class="form-control" id="start_date" placeholder="">
+                    <input type="text" class="form-control" name="start_date" id="start_date" placeholder="">
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
                     <label>Fecha final</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" name="end_date" id="end_date" placeholder="">
                 </div>
                 <div class="row col-md-6 col-md-offset-3">
                     <button type="submit" onclick="getData()" class="btn btn-danger btn-lg">Enviar</button>
@@ -140,7 +141,6 @@
     <!-- Bootstrap core JavaScript
        ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/retina-1.1.0.js"></script>
     <script src="assets/js/jquery.hoverdir.js"></script>
@@ -148,10 +148,12 @@
     <script src="assets/js/jquery.prettyPhoto.js"></script>
     <script src="assets/js/jquery.isotope.min.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="assets/js/jquery.cookie.js"></script>
 
-    <script type="text/javascript">
+    <script>
         google.charts.load('upcoming', {'packages':['geochart']});
         google.charts.setOnLoadCallback(drawRegionsMap);
+
 
         function drawRegionsMap() {
 
@@ -185,24 +187,48 @@
 
     }
 
-    </script>
-    <script type="text/javascript">
-        window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-bottom"};
+    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-bottom"};
+
     </script>
 <script>
+
     function getData() {
-        var temp= $('#start_date').val();
-        alert(temp);
-        $.get( "http://localhost/api/observations?startdate="+temp, function( data ) {
-            var a = data.docs[0].date;
-            var b = data.docs[1].date;
-            alert(a);
-            alert(b);
-            //$( "body" )
-             //       .append( "Name: " + data.name ) // John
-             //       .append( "Time: " + data.time ); //  2pm
+        var _latitude= $('#latitude').val();
+        var _longitude= $('#longitude').val();
+        var _distance= $('#distance').val();
+        var _start_date= $('#start_date').val();
+        var _end_date= $('#end_date').val();
+
+        $.cookie('latitude2', _latitude);
+        $.cookie('longitude2', _longitude);
+        $.cookie('distance2', _distance);
+        $.cookie('startdate2', _start_date);
+        $.cookie('enddate2', _end_date);
+
+        alert("start");
+        //alert("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date);
+
+        $.get("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date, function( data ) {
+            //var a = data.docs[0].date;
+            //var b = data.docs[1].date;
+            alert("get init");
+            var total = data.total;
+            var limit = data.limit;
+            //alert("prueba");
+            alert(total);
+            var pages= Math.floor(total/limit);//Division entera
+            alert("paginas: "+ pages);
+
         });
+
+
     }
+
+    $('#latitude').val($.cookie('latitude2'));
+    $('#longitude').val($.cookie('longitude2'));
+    $('#distance').val($.cookie('distance2'));
+    $('#start_date').val($.cookie('startdate2'));
+    $('#end_date').val($.cookie('enddate2'));
 </script>
 </body>
 </html>
