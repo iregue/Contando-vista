@@ -165,10 +165,39 @@
                 ['Canada', 500],
                 ['France', 600],
                 ['RU', 700],
-                ['Spain',600],
-                    ['Philippines',600],
-                    ['Anguilla',600],
-                    ['Burkina Faso',600]
+                ['Spain',0],
+                    ['Central African Republic',600],
+                    ['CI',600],
+                    ['Comoros',600],
+                    ['Czech Republic',600],
+                    ['Djibouti',600],
+                    ['Dominica',600],
+                    ['TL',600],
+                    ['Equatorial Guinea',600],
+                    ['El Salvador',600],
+                    ['Falkland Islands',600],
+                    ['Dominican Republic',600],
+                    ['Faroe Islands',600],
+                    ['French Guiana',600],
+                    ['Greenland',600],
+                    ['Fiji',600],
+                    ['Grenada',600],
+                    ['Guadeloupe',600],
+                    ['Guam',600],
+                    ['South Korea',600],
+                    ['North Korea',600],
+                    ['Jordan',600],
+                    ['Kazakhstan',600],
+                    ['Kyrgyzstan',600],
+                    ['Maldives',600],
+                    ['Martinique',600],
+                    ['Moldova',600],
+                    ['Myanmar',600],
+                    ['Namibia',600],
+                    ['Netherlands',600],
+                    ['New Caledonia',600],
+                    ['New Zealand',600],
+                    ['Croatia',600]
             ]);
 
             var options = {};
@@ -229,6 +258,21 @@
     var n_Burundi = 0;
     var n_Cambodia = 0;
     var n_Cameroon = 0;
+    var n_Canada = 0;
+    var n_Cayman_Islands = 0;
+    var n_Central_African_Republic = 0;
+    var n_Chad = 0;
+    var n_Chile = 0;
+    var n_China = 0;
+    var n_Colombia = 0;
+    var n_Comoros = 0;
+    var n_Congo = 0;
+    var n_Cook_Islands = 0;
+    var n_Costa_Rica = 0;
+    var n_Cote_DIvoire = 0;
+    var n_Croatia = 0;
+    var n_Cuba = 0;
+    var n_Cyprus = 0;
 
     function getData() {
         var _latitude= $('#latitude').val();
@@ -264,6 +308,7 @@
                 while(cont<resto)
                 {
                     var temp_country = data.docs[cont].country;
+                    alert(temp_country);
                     switch (temp_country)
                     {
                         case 'Spain':
@@ -368,129 +413,308 @@
                         case 'Cameroon':
                             n_Cameroon = n_Cameroon + 1;
                             break;
+                        case 'Canada':
+                            n_Canada = n_Canada + 1;
+                            break;
+                        case 'Cayman Islands':
+                            n_Cayman_Islands = n_Cayman_Islands + 1;
+                            break;
+                        case 'Central African Republic':
+                            n_Central_African_Republic = n_Central_African_Republic + 1;
+                            break;
+                        case 'Chad':
+                            n_Chad = n_Chad + 1;
+                            break;
+                        case 'Chile':
+                            n_Chile = n_Chile + 1;
+                            break;
+                        case 'China':
+                            n_China = n_China + 1;
+                            break;
+                        case 'Colombia':
+                            n_Colombia = n_Colombia + 1;
+                            break;
+                        case 'Comoros':
+                            n_Comoros = n_Comoros + 1;
+                            break;
+                        case 'Congo':
+                            n_Congo = n_Congo + 1;
+                            break;
+                        case 'Cook Islands':
+                            n_Cook_Islands = n_Cook_Islands + 1;
+                            break;
+                        case 'Costa Rica':
+                            n_Costa_Rica = n_Costa_Rica + 1;
+                            break;
+                        case 'Cote DIvoire':// id= CI
+                            n_Cote_DIvoire = n_Cote_DIvoire + 1;
+                            break;
+                        case 'Croatia':
+                            n_Croatia = n_Croatia + 1;
+                            break;
+                        case 'Cuba':
+                            n_Cuba = n_Cuba + 1;
+                            break;
+                        case 'Cyprus':
+                            n_Cyprus = n_Cyprus + 1;
+                            break;
+                        case 'Czech Republic':
+                            n_Czech_Republic = n_Czech_Republic + 1;
+                            break;
+                        case 'Denmark':
+                            n_Denmark = n_Denmark + 1;
+                            break;
+                        case 'Djibouti':
+                            n_Djibouti = n_Djibouti + 1;
+                            break;
+                        case 'Dominica':
+                            n_Dominica = n_Dominica + 1;
+                            break;
+                        case 'Dominican Republic':
+                            n_Dominican_Republic = n_Dominican_Republic + 1;
+                            break;
+                        case 'East Timor'://ID: TL
+                            n_East_Timor = n_East_Timor + 1;
+                            break;
+                        case 'Ecuador':
+                            n_Ecuador = n_Ecuador + 1;
+                            break;
+                        case 'Egypt':
+                            n_Egypt = n_Egypt + 1;
+                            break;
+                        case 'El Salvador':
+                            n_El_Salvador = n_El_Salvador + 1;
+                            break;
+                        case 'Equatorial Guinea':
+                            n_Equatorial_Guinea = n_Equatorial_Guinea + 1;
+                            break;
+                        case 'Eritrea':
+                            n_Eritrea = n_Eritrea + 1;
+                            break;
+                        case 'Estonia':
+                            n_Estonia = n_Estonia + 1;
+                            break;
+                        case 'Ethiopia':
+                            n_Ethiopia = n_Ethiopia + 1;
+                            break;
+                        case 'Falkland Islands':
+                            n_Falkland_Islands = n_Falkland_Islands + 1;
+                            break;
+                        case 'Faroe Islands':
+                            n_Faroe_Islands = n_Faroe_Islands + 1;
+                            break;
+                        case 'Fiji':
+                            n_Fiji = n_Fiji + 1;
+                            break;
+                        case 'Finland':
+                            n_Finland = n_Finland + 1;
+                            break;
+                        case 'France':
+                            n_France = n_France + 1;
+                            break;
+                        case 'French Guiana':
+                            n_French_Guiana = n_French_Guiana + 1;
+                            break;
+                        case 'Gabon':
+                            n_Gabon = n_Gabon + 1;
+                            break;
+                        case 'Gambia':
+                            n_Gambia = n_Gambia + 1;
+                            break;
+                        case 'Germany':
+                            n_Germany = n_Germany + 1;
+                            break;
+                        case 'Ghana':
+                            n_Ghana = n_Ghana + 1;
+                            break;
+                        case 'Greece':
+                            n_Greece = n_Greece + 1;
+                            break;
+                        case 'Greenland':
+                            n_Greenland = n_Greenland + 1;
+                            break;
+                        case 'Grenada':
+                            n_Grenada = n_Grenada + 1;
+                            break;
+                        case 'Guadeloupe':
+                            n_Guadeloupe = n_Guadeloupe + 1;
+                            break;
+                        case 'Guam':
+                            n_Guam = n_Guam + 1;
+                            break;
+                        case 'Guatemala':
+                            n_Guatemala = n_Guatemala + 1;
+                            break;
+                        case 'Guinea':
+                            n_Guinea = n_Guinea + 1;
+                            break;
+                        case 'Guyana':
+                            n_Guyana = n_Guyana + 1;
+                            break;
+                        case 'Haiti':
+                            n_Haiti = n_Haiti + 1;
+                            break;
+                        case 'Honduras':
+                            n_Honduras = n_Honduras + 1;
+                            break;
+                        case 'Hungary':
+                            n_Hungary = n_Hungary + 1;
+                            break;
+                        case 'Iceland':
+                            n_Iceland = n_Iceland + 1;
+                            break;
+                        case 'India':
+                            n_India = n_India + 1;
+                            break;
+                        case 'Indonesia':
+                            n_Indonesia = n_Indonesia + 1;
+                            break;
+                        case 'Iran':
+                            n_Iran = n_Iran + 1;
+                            break;
+                        case 'Iraq':
+                            n_Iraq = n_Iraq + 1;
+                            break;
+                        case 'Ireland':
+                            n_Ireland = n_Ireland + 1;
+                            break;
+                        case 'Israel':
+                            n_Israel = n_Israel + 1;
+                            break;
+                        case 'Italy':
+                            n_Italy = n_Italy + 1;
+                            break;
+                        case 'Jamaica':
+                            n_Jamaica = n_Jamaica + 1;
+                            break;
+                        case 'Japan':
+                            n_Japan = n_Japan + 1;
+                            break;
+                        case 'Jordan':
+                            n_Jordan = n_Jordan + 1;
+                            break;
+                        case 'Kazakhstan':
+                            n_Kazakhstan = n_Kazakhstan + 1;
+                            break;
+                        case 'Kenya':
+                            n_Kenya = n_Kenya + 1;
+                            break;
+                        case 'Kiribati':
+                            n_Kiribati = n_Kiribati + 1;
+                            break;
+                        case 'Kuwait':
+                            n_Kuwait = n_Kuwait + 1;
+                            break;
+                        case 'South Korea':
+                            n_South_Korea = n_South_Korea + 1;
+                            break;
+                        case 'North Korea':
+                            n_North_Korea = n_North_Korea + 1;
+                            break;
+                        case 'Kyrgyzstan':
+                            n_Kyrgyzstan = n_Kyrgyzstan + 1;
+                            break;
+                        case 'Laos':
+                            n_Laos = n_Laos + 1;
+                            break;
+                        case 'Latvia':
+                            n_Latvia = n_Latvia + 1;
+                            break;
+                        case 'Lebanon':
+                            n_Lebanon = n_Lebanon + 1;
+                            break;
+                        case 'Lesotho':
+                            n_Lesotho = n_Lesotho + 1;
+                            break;
+                        case 'Liberia':
+                            n_Liberia = n_Liberia + 1;
+                            break;
+                        case 'Libya':
+                            n_Libya = n_Libya + 1;
+                            break;
+                        case 'Liechtenstein':
+                            n_Liechtenstein = n_Liechtenstein + 1;
+                            break;
+                        case 'Lithuania':
+                            n_Lithuania = n_Lithuania + 1;
+                            break;
+                        case 'Luxembourg':
+                            n_Luxembourg = n_Luxembourg + 1;
+                            break;
+                        case 'Macedonia':
+                            n_Macedonia = n_Macedonia + 1;
+                            break;
+                        case 'Madagascar':
+                            n_Madagascar = n_Madagascar + 1;
+                            break;
+                        case 'Malaysia':
+                            n_Malaysia = n_Malaysia + 1;
+                            break;
+                        case 'Malawi':
+                            n_Malawi = n_Malawi + 1;
+                            break;
+                        case 'Maldives':
+                            n_Maldives = n_Maldives + 1;
+                            break;
+                        case 'Mali':
+                            n_Mali = n_Mali + 1;
+                            break;
+                        case 'Malta':
+                            n_Malta = n_Malta + 1;
+                            break;
+                        case 'Martinique':
+                            n_Martinique = n_Martinique + 1;
+                            break;
+                        case 'Mauritania':
+                            n_Mauritania = n_Mauritania + 1;
+                            break;
+                        case 'Mexico':
+                            n_Mexico = n_Mexico + 1;
+                            break;
+                        case 'Moldova':
+                            n_Moldova = n_Moldova + 1;
+                            break;
+                        case 'Monaco':
+                            n_Monaco = n_Monaco + 1;
+                            break;
+                        case 'Mongolia':
+                            n_Mongolia = n_Mongolia + 1;
+                            break;
+                        case 'Morocco':
+                            n_Morocco = n_Morocco + 1;
+                            break;
+                        case 'Mozambique':
+                            n_Mozambique = n_Mozambique + 1;
+                            break;
+                        case 'Myanmar':
+                            n_Myanmar = n_Myanmar + 1;
+                            break;
+                        case 'Namibia':
+                            n_Namibia = n_Namibia + 1;
+                            break;
+                        case 'Nepal':
+                            n_Nepal = n_Nepal + 1;
+                            break;
+                        case 'Netherlands':
+                            n_Netherlands = n_Netherlands + 1;
+                            break;
+                        case 'New Caledonia':
+                            n_New_Caledonia = n_New_Caledonia + 1;
+                            break;
+                        case 'New Zealand':
+                            n_New_Zealand = n_New_Zealand + 1;
+                            break;
+                        case 'Nicaragua':
+                            n_Nicaragua = n_Nicaragua + 1;
+                            break;
+                        case 'Niger':
+                            n_Niger = n_Niger + 1;
+                            break;
+                        case 'Nigeria':
+                            n_Nigeria = n_Nigeria + 1;
+                            break;
 
                             /*
-                                <option value="Canada">Canada</option>
-                                <option value="Cape Verde">Cape Verde</option>
-                        <option value="Cayman Islands">Cayman Islands</option>
-                        <option value="Central African Republic">Central African Republic</option>
-                        <option value="Chad">Chad</option>
-                                <option value="Channel Islands">Channel Islands</option>
-                        <option value="Chile">Chile</option>
-                                <option value="China">China</option>
-                                <option value="Christmas Island">Christmas Island</option>
-                        <option value="Cocos Island">Cocos Island</option>
-                        <option value="Colombia">Colombia</option>
-                                <option value="Comoros">Comoros</option>
-                                <option value="Congo">Congo</option>
-                                <option value="Cook Islands">Cook Islands</option>
-                        <option value="Costa Rica">Costa Rica</option>
-                        <option value="Cote DIvoire">Cote D'Ivoire</option>
-                        <option value="Croatia">Croatia</option>
-                                <option value="Cuba">Cuba</option>
-                                <option value="Curaco">Curacao</option>
-                                <option value="Cyprus">Cyprus</option>
-                                <option value="Czech Republic">Czech Republic</option>
-                        <option value="Denmark">Denmark</option>
-                                <option value="Djibouti">Djibouti</option>
-                                <option value="Dominica">Dominica</option>
-                                <option value="Dominican Republic">Dominican Republic</option>
-                        <option value="East Timor">East Timor</option>
-                        <option value="Ecuador">Ecuador</option>
-                                <option value="Egypt">Egypt</option>
-                                <option value="El Salvador">El Salvador</option>
-                        <option value="Equatorial Guinea">Equatorial Guinea</option>
-                        <option value="Eritrea">Eritrea</option>
-                                <option value="Estonia">Estonia</option>
-                                <option value="Ethiopia">Ethiopia</option>
-                                <option value="Falkland Islands">Falkland Islands</option>
-                        <option value="Faroe Islands">Faroe Islands</option>
-                        <option value="Fiji">Fiji</option>
-                                <option value="Finland">Finland</option>
-                                <option value="France">France</option>
-                                <option value="French Guiana">French Guiana</option>
-                        <option value="French Polynesia">French Polynesia</option>
-                        <option value="French Southern Ter">French Southern Ter</option>
-                        <option value="Gabon">Gabon</option>
-                                <option value="Gambia">Gambia</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Germany">Germany</option>
-                                <option value="Ghana">Ghana</option>
-                                <option value="Gibraltar">Gibraltar</option>
-                                <option value="Great Britain">Great Britain</option>
-                        <option value="Greece">Greece</option>
-                                <option value="Greenland">Greenland</option>
-                                <option value="Grenada">Grenada</option>
-                                <option value="Guadeloupe">Guadeloupe</option>
-                                <option value="Guam">Guam</option>
-                                <option value="Guatemala">Guatemala</option>
-                                <option value="Guinea">Guinea</option>
-                                <option value="Guyana">Guyana</option>
-                                <option value="Haiti">Haiti</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Hungary">Hungary</option>
-                                <option value="Iceland">Iceland</option>
-                                <option value="India">India</option>
-                                <option value="Indonesia">Indonesia</option>
-                                <option value="Iran">Iran</option>
-                                <option value="Iraq">Iraq</option>
-                                <option value="Ireland">Ireland</option>
-                                <option value="Isle of Man">Isle of Man</option>
-                        <option value="Israel">Israel</option>
-                                <option value="Italy">Italy</option>
-                                <option value="Jamaica">Jamaica</option>
-                                <option value="Japan">Japan</option>
-                                <option value="Jordan">Jordan</option>
-                                <option value="Kazakhstan">Kazakhstan</option>
-                                <option value="Kenya">Kenya</option>
-                                <option value="Kiribati">Kiribati</option>
-                                <option value="Korea North">Korea North</option>
-                        <option value="Korea Sout">Korea South</option>
-                        <option value="Kuwait">Kuwait</option>
-                                <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                <option value="Laos">Laos</option>
-                                <option value="Latvia">Latvia</option>
-                                <option value="Lebanon">Lebanon</option>
-                                <option value="Lesotho">Lesotho</option>
-                                <option value="Liberia">Liberia</option>
-                                <option value="Libya">Libya</option>
-                                <option value="Liechtenstein">Liechtenstein</option>
-                                <option value="Lithuania">Lithuania</option>
-                                <option value="Luxembourg">Luxembourg</option>
-                                <option value="Macedonia">Macedonia</option>
-                                <option value="Madagascar">Madagascar</option>
-                                <option value="Malaysia">Malaysia</option>
-                                <option value="Malawi">Malawi</option>
-                                <option value="Maldives">Maldives</option>
-                                <option value="Mali">Mali</option>
-                                <option value="Malta">Malta</option>
-                                <option value="Marshall Islands">Marshall Islands</option>
-                        <option value="Martinique">Martinique</option>
-                                <option value="Mauritania">Mauritania</option>
-                                <option value="Mauritius">Mauritius</option>
-                                <option value="Mayotte">Mayotte</option>
-                                <option value="Mexico">Mexico</option>
-                                <option value="Midway Islands">Midway Islands</option>
-                        <option value="Moldova">Moldova</option>
-                                <option value="Monaco">Monaco</option>
-                                <option value="Mongolia">Mongolia</option>
-                                <option value="Montserrat">Montserrat</option>
-                                <option value="Morocco">Morocco</option>
-                                <option value="Mozambique">Mozambique</option>
-                                <option value="Myanmar">Myanmar</option>
-                                <option value="Nambia">Nambia</option>
-                                <option value="Nauru">Nauru</option>
-                                <option value="Nepal">Nepal</option>
-                                <option value="Netherland Antilles">Netherland Antilles</option>
-                        <option value="Netherlands">Netherlands (Holland, Europe)</option>
-                                <option value="Nevis">Nevis</option>
-                                <option value="New Caledonia">New Caledonia</option>
-                        <option value="New Zealand">New Zealand</option>
-                        <option value="Nicaragua">Nicaragua</option>
-                                <option value="Niger">Niger</option>
-                                <option value="Nigeria">Nigeria</option>
-                                <option value="Niue">Niue</option>
-                                <option value="Norfolk Island">Norfolk Island</option>
                         <option value="Norway">Norway</option>
                                 <option value="Oman">Oman</option>
                                 <option value="Pakistan">Pakistan</option>
