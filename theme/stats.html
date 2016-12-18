@@ -27,7 +27,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="assets/js/validator/validator.js"></script>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Pluging para cookies-->
     <script src="assets/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
@@ -151,215 +151,202 @@
     <script src="assets/js/jquery.cookie.js"></script>
 
     <script>
-        google.charts.load('upcoming', {'packages':['geochart']});
-        google.charts.setOnLoadCallback(drawRegionsMap);
+        var n_Spain = 0;
+        var n_Afghanistan = 0;
+        var n_Albania = 0;
+        var n_Algeria = 0;
+        var n_American_Samoa = 0;
+        var n_Andorra = 0;
+        var n_Angola = 0;
+        var n_Anguilla = 0;
+        var n_Antigua_and_Barbuda = 0;
+        var n_Argentina = 0;
+        var n_Armenia = 0;
+        var n_Australia = 0;
+        var n_Austria = 0;
+        var n_Azerbaijan = 0;
+        var n_Bahamas = 0;
+        var n_Bahrain = 0;
+        var n_Bangladesh = 0;
+        var n_Barbados = 0;
+        var n_Belarus = 0;
+        var n_Belgium = 0;
+        var n_Belize = 0;
+        var n_Benin = 0;
+        var n_Bermuda = 0;
+        var n_Bhutan = 0;
+        var n_Bolivia = 0;
+        var n_Bosnia_and_Herzegovina = 0;
+        var n_Botswana = 0;
+        var n_Brazil = 0;
+        var n_Brunei = 0;
+        var n_Bulgaria = 0;
+        var n_Burkina_Faso = 0;
+        var n_Burundi = 0;
+        var n_Cambodia = 0;
+        var n_Cameroon = 0;
+        var n_Canada = 0;
+        var n_Cayman_Islands = 0;
+        var n_Central_African_Republic = 0;
+        var n_Chad = 0;
+        var n_Chile = 0;
+        var n_China = 0;
+        var n_Colombia = 0;
+        var n_Comoros = 0;
+        var n_Congo = 0;
+        var n_Congo_Republic = 0;
+        var n_Cook_Islands = 0;
+        var n_Costa_Rica = 0;
+        var n_Cote_DIvoire = 0;
+        var n_Croatia = 0;
+        var n_Cuba = 0;
+        var n_Cyprus = 0;
+        var n_Czech_Republic = 0;
+        var n_Denmark = 0;
+        var n_Djibouti = 0;
+        var n_Dominica = 0;
+        var n_Dominican_Republic = 0;
+        var n_East_Timor = 0;
+        var n_Ecuador = 0;
+        var n_Egypt = 0;
+        var n_El_Salvador = 0;
+        var n_Equatorial_Guinea = 0;
+        var n_Eritrea = 0;
+        var n_Estonia = 0;
+        var n_Ethiopia = 0;
+        var n_Falkland_Islands = 0;
+        var n_Faroe_Islands = 0;
+        var n_Fiji = 0;
+        var n_Finland = 0;
+        var n_France = 0;
+        var n_French_Guiana = 0;
+        var n_Gabon = 0;
+        var n_Gambia = 0;
+        var n_Germany = 0;
+        var n_Ghana = 0;
+        var n_Greece = 0;
+        var n_Greenland = 0;
+        var n_Grenada = 0;
+        var n_Guadeloupe = 0;
+        var n_Guam = 0;
+        var n_Guatemala = 0;
+        var n_Guinea = 0;
+        var n_Guyana = 0;
+        var n_Haiti = 0;
+        var n_Honduras = 0;
+        var n_Hungary = 0;
+        var n_Iceland = 0;
+        var n_India = 0;
+        var n_Indonesia = 0;
+        var n_Iran = 0;
+        var n_Iraq = 0;
+        var n_Ireland = 0;
+        var n_Israel = 0;
+        var n_Italy = 0;
+        var n_Jamaica = 0;
+        var n_Japan = 0;
+        var n_Jordan = 0;
+        var n_Kazakhstan = 0;
+        var n_Kenya = 0;
+        var n_Kiribati = 0;
+        var n_Kosovo = 0;
+        var n_Kuwait = 0;
+        var n_South_Korea = 0;
+        var n_North_Korea = 0;
+        var n_Kyrgyzstan = 0;
+        var n_Laos = 0;
+        var n_Latvia = 0;
+        var n_Lebanon = 0;
+        var n_Lesotho = 0;
+        var n_Liberia = 0;
+        var n_Libya = 0;
+        var n_Liechtenstein = 0;
+        var n_Lithuania = 0;
+        var n_Luxembourg = 0;
+        var n_Macedonia = 0;
+        var n_Madagascar = 0;
+        var n_Malaysia = 0;
+        var n_Malawi = 0;
+        var n_Maldives = 0;
+        var n_Mali = 0;
+        var n_Malta = 0;
+        var n_Martinique = 0;
+        var n_Mauritania = 0;
+        var n_Mexico = 0;
+        var n_Moldova = 0;
+        var n_Monaco = 0;
+        var n_Mongolia = 0;
+        var n_Morocco = 0;
+        var n_Mozambique = 0;
+        var n_Myanmar = 0;
+        var n_Namibia = 0;
+        var n_Nepal = 0;
+        var n_Netherlands = 0;
+        var n_New_Caledonia = 0;
+        var n_New_Zealand = 0;
+        var n_Nicaragua = 0;
+        var n_Niger = 0;
+        var n_Nigeria = 0;
+        var n_Norway = 0;
+        var n_Oman = 0;
+        var n_Pakistan = 0;
+        var n_Panama = 0;
+        var n_Papua_New_Guinea = 0;
+        var n_Paraguay = 0;
+        var n_Peru = 0;
+        var n_Philippines = 0;
+        var n_Poland = 0;
+        var n_Portugal = 0;
+        var n_Puerto_Rico = 0;
+        var n_Qatar = 0;
+        var n_Montenegro = 0;
+        var n_Serbia = 0;
+        var n_Romania = 0;
+        var n_Russia = 0;
+        var n_Rwanda = 0;
+        var n_Saudi_Arabia = 0;
+        var n_Senegal = 0;
+        var n_Sierra_Leone = 0;
+        var n_Singapore = 0;
+        var n_Slovakia = 0;
+        var n_Slovenia = 0;
+        var n_Svalbard = 0;
+        var n_Solomon_Islands = 0;
+        var n_Somalia = 0;
+        var n_South_Africa = 0;
+        var n_South_Sudan = 0;
+        var n_Sri_Lanka = 0;
+        var n_Sudan = 0;
+        var n_Suriname = 0;
+        var n_Swaziland = 0;
+        var n_Sweden = 0;
+        var n_Switzerland = 0;
+        var n_Syria = 0;
+        var n_Taiwan = 0;
+        var n_Tajikistan = 0;
+        var n_Tanzania = 0;
+        var n_Thailand = 0;
+        var n_Togo = 0;
+        var n_Tunisia = 0;
+        var n_Turkey = 0;
+        var n_Turkmenistan = 0;
+        var n_Uganda = 0;
+        var n_Ukraine = 0;
+        var n_United_Arab_Emirates = 0;
+        var n_United_Kingdom = 0;
+        var n_United_States = 0;
+        var n_Uruguay = 0;
+        var n_Uzbekistan = 0;
+        var n_Vanuatu = 0;
+        var n_Venezuela = 0;
+        var n_Vietnam = 0;
+        var n_Yemen = 0;
+        var n_Zaire = 0;
+        var n_Zambia = 0;
+        var n_Zimbabwe = 0;
+        var non_found = 0;
 
 
-        function drawRegionsMap() {
-
-            var data = google.visualization.arrayToDataTable([
-                    ['Country', 'Popularity'],
-            ['Spain',n_Spain],
-            ['Afghanistan',n_Afghanistan],
-            ['Albania',n_Albania],
-            ['Algeria',n_Algeria],
-            ['American Samoa',n_American_Samoa],
-            ['Andorra',n_Andorra],
-            ['Angola',n_Angola],
-            ['Anguilla',n_Anguilla],
-            ['Antigua and Barbuda',n_Antigua_and_Barbuda],
-            ['Argentina',n_Argentina],
-            ['Armenia',n_Armenia],
-            ['Australia',n_Australia],
-            ['Austria',n_Austria],
-            ['Azerbaijan',n_Azerbaijan],
-            ['Bahamas',n_Bahamas],
-            ['Bahrain',n_Bahrain],
-            ['Bangladesh',n_Bangladesh],
-            ['Barbados',n_Barbados],
-            ['Belarus',n_Belarus],
-            ['Belgium',n_Belgium],
-            ['Belize',n_Belize],
-            ['Benin',n_Benin],
-            ['Bermuda',n_Bermuda],
-            ['Bhutan',n_Bhutan],
-            ['Bolivia',n_Bolivia],
-            ['Bosnia and Herzegovina',n_Bosnia_and_Herzegovina],
-            ['Botswana',n_Botswana],
-            ['Brazil',n_Brazil],
-            ['Brunei',n_Brunei],
-            ['Bulgaria',n_Bulgaria],
-            ['Burkina Faso',n_Burkina_Faso],
-            ['Burundi',n_Burundi],
-            ['Cambodia',n_Cambodia],
-            ['Cameroon',n_Cameroon],
-            ['Canada',n_Canada],
-            ['Cayman Islands',n_Cayman_Islands],
-            ['Central African Republic',n_Central_African_Republic],
-            ['Chad',n_Chad],
-            ['Chile',n_Chile],
-            ['China',n_China],
-            ['Colombia',n_Colombia],
-            ['Comoros',n_Comoros],
-            ['CG',n_Congo],
-                ['CD',n_Congo_Republic],
-            ['Cook Islands',n_Cook_Islands],
-            ['Costa Rica',n_Costa_Rica],
-            ['CI',n_Cote_DIvoire],
-            ['Croatia',n_Croatia],
-            ['Cuba',n_Cuba],
-            ['Cyprus',n_Cyprus],
-            ['Czech Republic',n_Czech_Republic],
-            ['Denmark',n_Denmark],
-            ['Djibouti',n_Djibouti],
-            ['Dominica',n_Dominica],
-            ['Dominican Republic',n_Dominican_Republic],
-            ['TL',n_East_Timor],
-            ['Ecuador',n_Ecuador],
-            ['Egypt',n_Egypt],
-            ['El Salvador',n_El_Salvador],
-            ['Equatorial Guinea',n_Equatorial_Guinea],
-            ['Eritrea',n_Eritrea],
-            ['Estonia',n_Estonia],
-            ['Ethiopia',n_Ethiopia],
-            ['Falkland Islands',n_Falkland_Islands],
-            ['Faroe Islands',n_Faroe_Islands],
-            ['Fiji',n_Fiji],
-            ['Finland',n_Finland],
-            ['France',n_France],
-            ['French Guiana',n_French_Guiana],
-            ['Gabon',n_Gabon],
-            ['Gambia',n_Gambia],
-            ['Germany',n_Germany],
-            ['Ghana',n_Ghana],
-            ['Greece',n_Greece],
-            ['Greenland',n_Greenland],
-            ['Grenada',n_Grenada],
-            ['Guadeloupe',n_Guadeloupe],
-            ['Guam',n_Guam],
-            ['Guatemala',n_Guatemala],
-            ['Guinea',n_Guinea],
-            ['Guyana',n_Guyana],
-            ['Haiti',n_Haiti],
-            ['Honduras',n_Honduras],
-            ['Hungary',n_Hungary],
-            ['Iceland',n_Iceland],
-            ['India',n_India],
-            ['Indonesia',n_Indonesia],
-            ['Iran',n_Iran],
-            ['Iraq',n_Iraq],
-            ['Ireland',n_Ireland],
-            ['Israel',n_Israel],
-            ['Italy',n_Italy],
-            ['Jamaica',n_Jamaica],
-            ['Japan',n_Japan],
-            ['Jordan',n_Jordan],
-            ['Kazakhstan',n_Kazakhstan],
-            ['Kenya',n_Kenya],
-            ['Kiribati',n_Kiribati],
-            ['XK',n_Kosovo],
-            ['Kuwait',n_Kuwait],
-            ['South Korea',n_South_Korea],
-            ['North Korea',n_North_Korea],
-            ['Kyrgyzstan',n_Kyrgyzstan],
-            ['Laos',n_Laos],
-            ['Latvia',n_Latvia],
-            ['Lebanon',n_Lebanon],
-            ['Lesotho',n_Lesotho],
-            ['Liberia',n_Liberia],
-            ['Libya',n_Libya],
-            ['Liechtenstein',n_Liechtenstein],
-            ['Lithuania',n_Lithuania],
-            ['Luxembourg',n_Luxembourg],
-            ['Macedonia',n_Macedonia],
-            ['Madagascar',n_Madagascar],
-            ['Malaysia',n_Malaysia],
-            ['Malawi',n_Malawi],
-            ['Maldives',n_Maldives],
-            ['Mali',n_Mali],
-            ['Malta',n_Malta],
-            ['Martinique',n_Martinique],
-            ['Mauritania',n_Mauritania],
-            ['Mexico',n_Mexico],
-            ['Moldova',n_Moldova],
-            ['Monaco',n_Monaco],
-            ['Mongolia',n_Mongolia],
-            ['Morocco',n_Morocco],
-            ['Mozambique',n_Mozambique],
-            ['Myanmar',n_Myanmar],
-            ['Namibia',n_Namibia],
-            ['Nepal',n_Nepal],
-            ['Netherlands',n_Netherlands],
-            ['New Caledonia',n_New_Caledonia],
-            ['New Zealand',n_New_Zealand],
-            ['Nicaragua',n_Nicaragua],
-            ['Niger',n_Niger],
-            ['Nigeria',n_Nigeria],
-            ['Norway',n_Norway],
-            ['Oman',n_Oman],
-            ['Pakistan',n_Pakistan],
-            ['Panama',n_Panama],
-            ['Papua New Guinea',n_Papua_New_Guinea],
-            ['Paraguay',n_Paraguay],
-            ['Peru',n_Peru],
-            ['Philippines',n_Philippines],
-            ['Poland',n_Poland],
-            ['Portugal',n_Portugal],
-            ['Puerto Rico',n_Puerto_Rico],
-            ['Qatar',n_Qatar],
-            ['Montenegro',n_Montenegro],
-            ['Serbia',n_Serbia],
-            ['Romania',n_Romania],
-            ['Russia',n_Russia],
-            ['Rwanda',n_Rwanda],
-            ['Saudi Arabia',n_Saudi_Arabia],
-            ['Senegal',n_Senegal],
-            ['Sierra Leone',n_Sierra_Leone],
-            ['Singapore',n_Singapore],
-            ['Slovakia',n_Slovakia],
-            ['Slovenia',n_Slovenia],
-            ['SJ',n_Slovenia],
-            ['Solomon Islands',n_Solomon_Islands],
-            ['Somalia',n_Somalia],
-            ['South Africa',n_South_Africa],
-                    ['SS',n_South_Sudan],
-            ['Sri Lanka',n_Sri_Lanka],
-            ['Sudan',n_Sudan],
-            ['Suriname',n_Suriname],
-            ['Swaziland',n_Swaziland],
-            ['Sweden',n_Sweden],
-            ['Switzerland',n_Switzerland],
-            ['Syria',n_Syria],
-            ['Taiwan',n_Taiwan],
-            ['Tajikistan',n_Tajikistan],
-            ['Tanzania',n_Tanzania],
-            ['Thailand',n_Thailand],
-            ['Togo',n_Togo],
-            ['Tunisia',n_Tunisia],
-            ['Turkey',n_Turkey],
-            ['Turkmenistan',n_Turkmenistan],
-            ['Uganda',n_Uganda],
-            ['Ukraine',n_Ukraine],
-            ['United Arab Emirates',n_United_Arab_Emirates],
-            ['United Kingdom',n_United_Kingdom],
-            ['United States',n_United_States],
-            ['Uruguay',n_Uruguay],
-            ['Uzbekistan',n_Uzbekistan],
-            ['Vanuatu',n_Vanuatu],
-            ['Venezuela',n_Venezuela],
-            ['Vietnam',n_Vietnam],
-            ['Yemen',n_Yemen],
-            ['Zaire',n_Zaire],
-            ['Zambia',n_Zambia],
-            ['Zimbabwe',n_Zimbabwe]
-            ]);
-
-            var options = {};
-
-            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-            chart.draw(data, options);
-        }
     if(screen.width < 426){
         $("#regions_div").css("width","310px");
         $("#regions_div").css("height","310px");
@@ -378,200 +365,7 @@
 
     </script>
 <script>
-    var n_Spain = 0;
-    var n_Afghanistan = 0;
-    var n_Albania = 0;
-    var n_Algeria = 0;
-    var n_American_Samoa = 0;
-    var n_Andorra = 0;
-    var n_Angola = 0;
-    var n_Anguilla = 0;
-    var n_Antigua_and_Barbuda = 0;
-    var n_Argentina = 0;
-    var n_Armenia = 0;
-    var n_Australia = 0;
-    var n_Austria = 0;
-    var n_Azerbaijan = 0;
-    var n_Bahamas = 0;
-    var n_Bahrain = 0;
-    var n_Bangladesh = 0;
-    var n_Barbados = 0;
-    var n_Belarus = 0;
-    var n_Belgium = 0;
-    var n_Belize = 0;
-    var n_Benin = 0;
-    var n_Bermuda = 0;
-    var n_Bhutan = 0;
-    var n_Bolivia = 0;
-    var n_Bosnia_and_Herzegovina = 0;
-    var n_Botswana = 0;
-    var n_Brazil = 0;
-    var n_Brunei = 0;
-    var n_Bulgaria = 0;
-    var n_Burkina_Faso = 0;
-    var n_Burundi = 0;
-    var n_Cambodia = 0;
-    var n_Cameroon = 0;
-    var n_Canada = 0;
-    var n_Cayman_Islands = 0;
-    var n_Central_African_Republic = 0;
-    var n_Chad = 0;
-    var n_Chile = 0;
-    var n_China = 0;
-    var n_Colombia = 0;
-    var n_Comoros = 0;
-    var n_Congo = 0;
-    var n_Congo_Republic = 0;
-    var n_Cook_Islands = 0;
-    var n_Costa_Rica = 0;
-    var n_Cote_DIvoire = 0;
-    var n_Croatia = 0;
-    var n_Cuba = 0;
-    var n_Cyprus = 0;
-    var n_Czech_Republic = 0;
-    var n_Denmark = 0;
-    var n_Djibouti = 0;
-    var n_Dominica = 0;
-    var n_Dominican_Republic = 0;
-    var n_East_Timor = 0;
-    var n_Ecuador = 0;
-    var n_Egypt = 0;
-    var n_El_Salvador = 0;
-    var n_Equatorial_Guinea = 0;
-    var n_Eritrea = 0;
-    var n_Estonia = 0;
-    var n_Ethiopia = 0;
-    var n_Falkland_Islands = 0;
-    var n_Faroe_Islands = 0;
-    var n_Fiji = 0;
-    var n_Finland = 0;
-    var n_France = 0;
-    var n_French_Guiana = 0;
-    var n_Gabon = 0;
-    var n_Gambia = 0;
-    var n_Germany = 0;
-    var n_Ghana = 0;
-    var n_Greece = 0;
-    var n_Greenland = 0;
-    var n_Grenada = 0;
-    var n_Guadeloupe = 0;
-    var n_Guam = 0;
-    var n_Guatemala = 0;
-    var n_Guinea = 0;
-    var n_Guyana = 0;
-    var n_Haiti = 0;
-    var n_Honduras = 0;
-    var n_Hungary = 0;
-    var n_Iceland = 0;
-    var n_India = 0;
-    var n_Indonesia = 0;
-    var n_Iran = 0;
-    var n_Iraq = 0;
-    var n_Ireland = 0;
-    var n_Israel = 0;
-    var n_Italy = 0;
-    var n_Jamaica = 0;
-    var n_Japan = 0;
-    var n_Jordan = 0;
-    var n_Kazakhstan = 0;
-    var n_Kenya = 0;
-    var n_Kiribati = 0;
-    var n_Kosovo = 0;
-    var n_Kuwait = 0;
-    var n_South_Korea = 0;
-    var n_North_Korea = 0;
-    var n_Kyrgyzstan = 0;
-    var n_Laos = 0;
-    var n_Latvia = 0;
-    var n_Lebanon = 0;
-    var n_Lesotho = 0;
-    var n_Liberia = 0;
-    var n_Libya = 0;
-    var n_Liechtenstein = 0;
-    var n_Lithuania = 0;
-    var n_Luxembourg = 0;
-    var n_Macedonia = 0;
-    var n_Madagascar = 0;
-    var n_Malaysia = 0;
-    var n_Malawi = 0;
-    var n_Maldives = 0;
-    var n_Mali = 0;
-    var n_Malta = 0;
-    var n_Martinique = 0;
-    var n_Mauritania = 0;
-    var n_Mexico = 0;
-    var n_Moldova = 0;
-    var n_Monaco = 0;
-    var n_Mongolia = 0;
-    var n_Morocco = 0;
-    var n_Mozambique = 0;
-    var n_Myanmar = 0;
-    var n_Namibia = 0;
-    var n_Nepal = 0;
-    var n_Netherlands = 0;
-    var n_New_Caledonia = 0;
-    var n_New_Zealand = 0;
-    var n_Nicaragua = 0;
-    var n_Niger = 0;
-    var n_Nigeria = 0;
-    var n_Norway = 0;
-    var n_Oman = 0;
-    var n_Pakistan = 0;
-    var n_Panama = 0;
-    var n_Papua_New_Guinea = 0;
-    var n_Paraguay = 0;
-    var n_Peru = 0;
-    var n_Philippines = 0;
-    var n_Poland = 0;
-    var n_Portugal = 0;
-    var n_Puerto_Rico = 0;
-    var n_Qatar = 0;
-    var n_Montenegro = 0;
-    var n_Serbia = 0;
-    var n_Romania = 0;
-    var n_Russia = 0;
-    var n_Rwanda = 0;
-    var n_Saudi_Arabia = 0;
-    var n_Senegal = 0;
-    var n_Sierra_Leone = 0;
-    var n_Singapore = 0;
-    var n_Slovakia = 0;
-    var n_Slovenia = 0;
-    var n_Svalbard = 0;
-    var n_Solomon_Islands = 0;
-    var n_Somalia = 0;
-    var n_South_Africa = 0;
-    var n_South_Sudan = 0;
-    var n_Sri_Lanka = 0;
-    var n_Sudan = 0;
-    var n_Suriname = 0;
-    var n_Swaziland = 0;
-    var n_Sweden = 0;
-    var n_Switzerland = 0;
-    var n_Syria = 0;
-    var n_Taiwan = 0;
-    var n_Tajikistan = 0;
-    var n_Tanzania = 0;
-    var n_Thailand = 0;
-    var n_Togo = 0;
-    var n_Tunisia = 0;
-    var n_Turkey = 0;
-    var n_Turkmenistan = 0;
-    var n_Uganda = 0;
-    var n_Ukraine = 0;
-    var n_United_Arab_Emirates = 0;
-    var n_United_Kingdom = 0;
-    var n_United_States = 0;
-    var n_Uruguay = 0;
-    var n_Uzbekistan = 0;
-    var n_Vanuatu = 0;
-    var n_Venezuela = 0;
-    var n_Vietnam = 0;
-    var n_Yemen = 0;
-    var n_Zaire = 0;
-    var n_Zambia = 0;
-    var n_Zimbabwe = 0;
-    var non_found = 0;
+
 
 
     function getData() {
@@ -608,12 +402,13 @@
                 while(cont<resto)
                 {
                     var temp_country = data.docs[cont].country;
-                    alert(temp_country);
+                    //alert(temp_country);
                     foundCountry(temp_country);
                     cont = cont +1;
                 }
             }
-
+            //drawRegionsMap();
+            //google.charts.setOnLoadCallback(drawRegionsMap);
         });
 
 
@@ -1204,6 +999,219 @@ function foundCountry(country) {
         default: non_found =non_found +1;
     }
 }
+
+    google.charts.load('upcoming', {'packages':['geochart']});
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+
+    function drawRegionsMap() {
+//alert("nspain= "+ n_Spain);
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Observations'],
+            ['Spain',n_Spain],
+            ['Afghanistan',n_Afghanistan],
+            ['Albania',n_Albania],
+            ['Algeria',n_Algeria],
+            ['American Samoa',n_American_Samoa],
+            ['Andorra',n_Andorra],
+            ['Angola',n_Angola],
+            ['Anguilla',n_Anguilla],
+            ['Antigua and Barbuda',n_Antigua_and_Barbuda],
+            ['Argentina',n_Argentina],
+            ['Armenia',n_Armenia],
+            ['Australia',n_Australia],
+            ['Austria',n_Austria],
+            ['Azerbaijan',n_Azerbaijan],
+            ['Bahamas',n_Bahamas],
+            ['Bahrain',n_Bahrain],
+            ['Bangladesh',n_Bangladesh],
+            ['Barbados',n_Barbados],
+            ['Belarus',n_Belarus],
+            ['Belgium',n_Belgium],
+            ['Belize',n_Belize],
+            ['Benin',n_Benin],
+            ['Bermuda',n_Bermuda],
+            ['Bhutan',n_Bhutan],
+            ['Bolivia',n_Bolivia],
+            ['Bosnia and Herzegovina',n_Bosnia_and_Herzegovina],
+            ['Botswana',n_Botswana],
+            ['Brazil',n_Brazil],
+            ['Brunei',n_Brunei],
+            ['Bulgaria',n_Bulgaria],
+            ['Burkina Faso',n_Burkina_Faso],
+            ['Burundi',n_Burundi],
+            ['Cambodia',n_Cambodia],
+            ['Cameroon',n_Cameroon],
+            ['Canada',n_Canada],
+            ['Cayman Islands',n_Cayman_Islands],
+            ['Central African Republic',n_Central_African_Republic],
+            ['Chad',n_Chad],
+            ['Chile',n_Chile],
+            ['China',n_China],
+            ['Colombia',n_Colombia],
+            ['Comoros',n_Comoros],
+            ['CG',n_Congo],
+            ['CD',n_Congo_Republic],
+            ['Cook Islands',n_Cook_Islands],
+            ['Costa Rica',n_Costa_Rica],
+            ['CI',n_Cote_DIvoire],
+            ['Croatia',n_Croatia],
+            ['Cuba',n_Cuba],
+            ['Cyprus',n_Cyprus],
+            ['Czech Republic',n_Czech_Republic],
+            ['Denmark',n_Denmark],
+            ['Djibouti',n_Djibouti],
+            ['Dominica',n_Dominica],
+            ['Dominican Republic',n_Dominican_Republic],
+            ['TL',n_East_Timor],
+            ['Ecuador',n_Ecuador],
+            ['Egypt',n_Egypt],
+            ['El Salvador',n_El_Salvador],
+            ['Equatorial Guinea',n_Equatorial_Guinea],
+            ['Eritrea',n_Eritrea],
+            ['Estonia',n_Estonia],
+            ['Ethiopia',n_Ethiopia],
+            ['Falkland Islands',n_Falkland_Islands],
+            ['Faroe Islands',n_Faroe_Islands],
+            ['Fiji',n_Fiji],
+            ['Finland',n_Finland],
+            ['France',n_France],
+            ['French Guiana',n_French_Guiana],
+            ['Gabon',n_Gabon],
+            ['Gambia',n_Gambia],
+            ['Germany',n_Germany],
+            ['Ghana',n_Ghana],
+            ['Greece',n_Greece],
+            ['Greenland',n_Greenland],
+            ['Grenada',n_Grenada],
+            ['Guadeloupe',n_Guadeloupe],
+            ['Guam',n_Guam],
+            ['Guatemala',n_Guatemala],
+            ['Guinea',n_Guinea],
+            ['Guyana',n_Guyana],
+            ['Haiti',n_Haiti],
+            ['Honduras',n_Honduras],
+            ['Hungary',n_Hungary],
+            ['Iceland',n_Iceland],
+            ['India',n_India],
+            ['Indonesia',n_Indonesia],
+            ['Iran',n_Iran],
+            ['Iraq',n_Iraq],
+            ['Ireland',n_Ireland],
+            ['Israel',n_Israel],
+            ['Italy',n_Italy],
+            ['Jamaica',n_Jamaica],
+            ['Japan',n_Japan],
+            ['Jordan',n_Jordan],
+            ['Kazakhstan',n_Kazakhstan],
+            ['Kenya',n_Kenya],
+            ['Kiribati',n_Kiribati],
+            ['XK',n_Kosovo],
+            ['Kuwait',n_Kuwait],
+            ['South Korea',n_South_Korea],
+            ['North Korea',n_North_Korea],
+            ['Kyrgyzstan',n_Kyrgyzstan],
+            ['Laos',n_Laos],
+            ['Latvia',n_Latvia],
+            ['Lebanon',n_Lebanon],
+            ['Lesotho',n_Lesotho],
+            ['Liberia',n_Liberia],
+            ['Libya',n_Libya],
+            ['Liechtenstein',n_Liechtenstein],
+            ['Lithuania',n_Lithuania],
+            ['Luxembourg',n_Luxembourg],
+            ['Macedonia',n_Macedonia],
+            ['Madagascar',n_Madagascar],
+            ['Malaysia',n_Malaysia],
+            ['Malawi',n_Malawi],
+            ['Maldives',n_Maldives],
+            ['Mali',n_Mali],
+            ['Malta',n_Malta],
+            ['Martinique',n_Martinique],
+            ['Mauritania',n_Mauritania],
+            ['Mexico',n_Mexico],
+            ['Moldova',n_Moldova],
+            ['Monaco',n_Monaco],
+            ['Mongolia',n_Mongolia],
+            ['Morocco',n_Morocco],
+            ['Mozambique',n_Mozambique],
+            ['Myanmar',n_Myanmar],
+            ['Namibia',n_Namibia],
+            ['Nepal',n_Nepal],
+            ['Netherlands',n_Netherlands],
+            ['New Caledonia',n_New_Caledonia],
+            ['New Zealand',n_New_Zealand],
+            ['Nicaragua',n_Nicaragua],
+            ['Niger',n_Niger],
+            ['Nigeria',n_Nigeria],
+            ['Norway',n_Norway],
+            ['Oman',n_Oman],
+            ['Pakistan',n_Pakistan],
+            ['Panama',n_Panama],
+            ['Papua New Guinea',n_Papua_New_Guinea],
+            ['Paraguay',n_Paraguay],
+            ['Peru',n_Peru],
+            ['Philippines',n_Philippines],
+            ['Poland',n_Poland],
+            ['Portugal',n_Portugal],
+            ['Puerto Rico',n_Puerto_Rico],
+            ['Qatar',n_Qatar],
+            ['Montenegro',n_Montenegro],
+            ['Serbia',n_Serbia],
+            ['Romania',n_Romania],
+            ['Russia',n_Russia],
+            ['Rwanda',n_Rwanda],
+            ['Saudi Arabia',n_Saudi_Arabia],
+            ['Senegal',n_Senegal],
+            ['Sierra Leone',n_Sierra_Leone],
+            ['Singapore',n_Singapore],
+            ['Slovakia',n_Slovakia],
+            ['Slovenia',n_Slovenia],
+            ['SJ',n_Slovenia],
+            ['Solomon Islands',n_Solomon_Islands],
+            ['Somalia',n_Somalia],
+            ['South Africa',n_South_Africa],
+            ['SS',n_South_Sudan],
+            ['Sri Lanka',n_Sri_Lanka],
+            ['Sudan',n_Sudan],
+            ['Suriname',n_Suriname],
+            ['Swaziland',n_Swaziland],
+            ['Sweden',n_Sweden],
+            ['Switzerland',n_Switzerland],
+            ['Syria',n_Syria],
+            ['Taiwan',n_Taiwan],
+            ['Tajikistan',n_Tajikistan],
+            ['Tanzania',n_Tanzania],
+            ['Thailand',n_Thailand],
+            ['Togo',n_Togo],
+            ['Tunisia',n_Tunisia],
+            ['Turkey',n_Turkey],
+            ['Turkmenistan',n_Turkmenistan],
+            ['Uganda',n_Uganda],
+            ['Ukraine',n_Ukraine],
+            ['United Arab Emirates',n_United_Arab_Emirates],
+            ['United Kingdom',n_United_Kingdom],
+            ['United States',n_United_States],
+            ['Uruguay',n_Uruguay],
+            ['Uzbekistan',n_Uzbekistan],
+            ['Vanuatu',n_Vanuatu],
+            ['Venezuela',n_Venezuela],
+            ['Vietnam',n_Vietnam],
+            ['Yemen',n_Yemen],
+            ['Zaire',n_Zaire],
+            ['Zambia',n_Zambia],
+            ['Zimbabwe',n_Zimbabwe]
+        ]);
+
+        var options = {};
+        options['dataMode'] = 'regions';
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+    }
+
+
     $('#latitude').val($.cookie('latitude2'));
     $('#longitude').val($.cookie('longitude2'));
     $('#distance').val($.cookie('distance2'));
