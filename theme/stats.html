@@ -158,57 +158,200 @@
         function drawRegionsMap() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Country', 'Popularity'],
-                ['Germany', 200],
-                ['United States', 300],
-                ['Brazil', 400],
-                ['Canada', 500],
-                ['France', 600],
-                ['RU', 700],
-                ['Spain',0],
-                    ['Central African Republic',600],
-                    ['CI',600],
-                    ['Comoros',600],
-                    ['Czech Republic',600],
-                    ['Djibouti',600],
-                    ['Dominica',600],
-                    ['United Arab Emirates',600],
-                    ['TL',600],
-                    ['Equatorial Guinea',600],
-                    ['El Salvador',600],
-                    ['Falkland Islands',600],
-                    ['Dominican Republic',600],
-                    ['Faroe Islands',600],
-                    ['French Guiana',600],
-                    ['Greenland',600],
-                    ['Fiji',600],
-                    ['Grenada',600],
-                    ['Guadeloupe',600],
-                    ['Guam',600],
-                    ['South Korea',600],
-                    ['North Korea',600],
-                    ['Jordan',600],
-                    ['Kazakhstan',600],
-                    ['Kyrgyzstan',600],
-                    ['Maldives',600],
-                    ['Martinique',600],
-                    ['Moldova',600],
-                    ['Myanmar',600],
-                    ['Namibia',600],
-                    ['Netherlands',600],
-                    ['New Caledonia',600],
-                    ['New Zealand',600],
-                    ['Philippines',600],
-                    ['Puerto Rico',600],
-                    ['Montenegro',600],
-                    ['Serbia',600],
-                    ['Saudi Arabia',600],
-                    ['Sierra Leone',600],
-                    ['Solomon Islands',600],
-                    ['Sri Lanka',600],
-                    ['Switzerland',600],
-                    ['Vanuatu',600],
-                    ['Croatia',600]
+                    ['Country', 'Popularity'],
+            ['Spain',n_Spain],
+            ['Afghanistan',n_Afghanistan],
+            ['Albania',n_Albania],
+            ['Algeria',n_Algeria],
+            ['American Samoa',n_American_Samoa],
+            ['Andorra',n_Andorra],
+            ['Angola',n_Angola],
+            ['Anguilla',n_Anguilla],
+            ['Antigua and Barbuda',n_Antigua_and_Barbuda],
+            ['Argentina',n_Argentina],
+            ['Armenia',n_Armenia],
+            ['Australia',n_Australia],
+            ['Austria',n_Austria],
+            ['Azerbaijan',n_Azerbaijan],
+            ['Bahamas',n_Bahamas],
+            ['Bahrain',n_Bahrain],
+            ['Bangladesh',n_Bangladesh],
+            ['Barbados',n_Barbados],
+            ['Belarus',n_Belarus],
+            ['Belgium',n_Belgium],
+            ['Belize',n_Belize],
+            ['Benin',n_Benin],
+            ['Bermuda',n_Bermuda],
+            ['Bhutan',n_Bhutan],
+            ['Bolivia',n_Bolivia],
+            ['Bosnia and Herzegovina',n_Bosnia_and_Herzegovina],
+            ['Botswana',n_Botswana],
+            ['Brazil',n_Brazil],
+            ['Brunei',n_Brunei],
+            ['Bulgaria',n_Bulgaria],
+            ['Burkina Faso',n_Burkina_Faso],
+            ['Burundi',n_Burundi],
+            ['Cambodia',n_Cambodia],
+            ['Cameroon',n_Cameroon],
+            ['Canada',n_Canada],
+            ['Cayman Islands',n_Cayman_Islands],
+            ['Central African Republic',n_Central_African_Republic],
+            ['Chad',n_Chad],
+            ['Chile',n_Chile],
+            ['China',n_China],
+            ['Colombia',n_Colombia],
+            ['Comoros',n_Comoros],
+            ['CG',n_Congo],
+                ['CD',n_Congo_Republic],
+            ['Cook Islands',n_Cook_Islands],
+            ['Costa Rica',n_Costa_Rica],
+            ['CI',n_Cote_DIvoire],
+            ['Croatia',n_Croatia],
+            ['Cuba',n_Cuba],
+            ['Cyprus',n_Cyprus],
+            ['Czech Republic',n_Czech_Republic],
+            ['Denmark',n_Denmark],
+            ['Djibouti',n_Djibouti],
+            ['Dominica',n_Dominica],
+            ['Dominican Republic',n_Dominican_Republic],
+            ['TL',n_East_Timor],
+            ['Ecuador',n_Ecuador],
+            ['Egypt',n_Egypt],
+            ['El Salvador',n_El_Salvador],
+            ['Equatorial Guinea',n_Equatorial_Guinea],
+            ['Eritrea',n_Eritrea],
+            ['Estonia',n_Estonia],
+            ['Ethiopia',n_Ethiopia],
+            ['Falkland Islands',n_Falkland_Islands],
+            ['Faroe Islands',n_Faroe_Islands],
+            ['Fiji',n_Fiji],
+            ['Finland',n_Finland],
+            ['France',n_France],
+            ['French Guiana',n_French_Guiana],
+            ['Gabon',n_Gabon],
+            ['Gambia',n_Gambia],
+            ['Germany',n_Germany],
+            ['Ghana',n_Ghana],
+            ['Greece',n_Greece],
+            ['Greenland',n_Greenland],
+            ['Grenada',n_Grenada],
+            ['Guadeloupe',n_Guadeloupe],
+            ['Guam',n_Guam],
+            ['Guatemala',n_Guatemala],
+            ['Guinea',n_Guinea],
+            ['Guyana',n_Guyana],
+            ['Haiti',n_Haiti],
+            ['Honduras',n_Honduras],
+            ['Hungary',n_Hungary],
+            ['Iceland',n_Iceland],
+            ['India',n_India],
+            ['Indonesia',n_Indonesia],
+            ['Iran',n_Iran],
+            ['Iraq',n_Iraq],
+            ['Ireland',n_Ireland],
+            ['Israel',n_Israel],
+            ['Italy',n_Italy],
+            ['Jamaica',n_Jamaica],
+            ['Japan',n_Japan],
+            ['Jordan',n_Jordan],
+            ['Kazakhstan',n_Kazakhstan],
+            ['Kenya',n_Kenya],
+            ['Kiribati',n_Kiribati],
+            ['XK',n_Kosovo],
+            ['Kuwait',n_Kuwait],
+            ['South Korea',n_South_Korea],
+            ['North Korea',n_North_Korea],
+            ['Kyrgyzstan',n_Kyrgyzstan],
+            ['Laos',n_Laos],
+            ['Latvia',n_Latvia],
+            ['Lebanon',n_Lebanon],
+            ['Lesotho',n_Lesotho],
+            ['Liberia',n_Liberia],
+            ['Libya',n_Libya],
+            ['Liechtenstein',n_Liechtenstein],
+            ['Lithuania',n_Lithuania],
+            ['Luxembourg',n_Luxembourg],
+            ['Macedonia',n_Macedonia],
+            ['Madagascar',n_Madagascar],
+            ['Malaysia',n_Malaysia],
+            ['Malawi',n_Malawi],
+            ['Maldives',n_Maldives],
+            ['Mali',n_Mali],
+            ['Malta',n_Malta],
+            ['Martinique',n_Martinique],
+            ['Mauritania',n_Mauritania],
+            ['Mexico',n_Mexico],
+            ['Moldova',n_Moldova],
+            ['Monaco',n_Monaco],
+            ['Mongolia',n_Mongolia],
+            ['Morocco',n_Morocco],
+            ['Mozambique',n_Mozambique],
+            ['Myanmar',n_Myanmar],
+            ['Namibia',n_Namibia],
+            ['Nepal',n_Nepal],
+            ['Netherlands',n_Netherlands],
+            ['New Caledonia',n_New_Caledonia],
+            ['New Zealand',n_New_Zealand],
+            ['Nicaragua',n_Nicaragua],
+            ['Niger',n_Niger],
+            ['Nigeria',n_Nigeria],
+            ['Norway',n_Norway],
+            ['Oman',n_Oman],
+            ['Pakistan',n_Pakistan],
+            ['Panama',n_Panama],
+            ['Papua New Guinea',n_Papua_New_Guinea],
+            ['Paraguay',n_Paraguay],
+            ['Peru',n_Peru],
+            ['Philippines',n_Philippines],
+            ['Poland',n_Poland],
+            ['Portugal',n_Portugal],
+            ['Puerto Rico',n_Puerto_Rico],
+            ['Qatar',n_Qatar],
+            ['Montenegro',n_Montenegro],
+            ['Serbia',n_Serbia],
+            ['Romania',n_Romania],
+            ['Russia',n_Russia],
+            ['Rwanda',n_Rwanda],
+            ['Saudi Arabia',n_Saudi_Arabia],
+            ['Senegal',n_Senegal],
+            ['Sierra Leone',n_Sierra_Leone],
+            ['Singapore',n_Singapore],
+            ['Slovakia',n_Slovakia],
+            ['Slovenia',n_Slovenia],
+            ['SJ',n_Slovenia],
+            ['Solomon Islands',n_Solomon_Islands],
+            ['Somalia',n_Somalia],
+            ['South Africa',n_South_Africa],
+                    ['SS',n_South_Sudan],
+            ['Sri Lanka',n_Sri_Lanka],
+            ['Sudan',n_Sudan],
+            ['Suriname',n_Suriname],
+            ['Swaziland',n_Swaziland],
+            ['Sweden',n_Sweden],
+            ['Switzerland',n_Switzerland],
+            ['Syria',n_Syria],
+            ['Taiwan',n_Taiwan],
+            ['Tajikistan',n_Tajikistan],
+            ['Tanzania',n_Tanzania],
+            ['Thailand',n_Thailand],
+            ['Togo',n_Togo],
+            ['Tunisia',n_Tunisia],
+            ['Turkey',n_Turkey],
+            ['Turkmenistan',n_Turkmenistan],
+            ['Uganda',n_Uganda],
+            ['Ukraine',n_Ukraine],
+            ['United Arab Emirates',n_United_Arab_Emirates],
+            ['United Kingdom',n_United_Kingdom],
+            ['United States',n_United_States],
+            ['Uruguay',n_Uruguay],
+            ['Uzbekistan',n_Uzbekistan],
+            ['Vanuatu',n_Vanuatu],
+            ['Venezuela',n_Venezuela],
+            ['Vietnam',n_Vietnam],
+            ['Yemen',n_Yemen],
+            ['Zaire',n_Zaire],
+            ['Zambia',n_Zambia],
+            ['Zimbabwe',n_Zimbabwe]
             ]);
 
             var options = {};
@@ -278,6 +421,7 @@
     var n_Colombia = 0;
     var n_Comoros = 0;
     var n_Congo = 0;
+    var n_Congo_Republic = 0;
     var n_Cook_Islands = 0;
     var n_Costa_Rica = 0;
     var n_Cote_DIvoire = 0;
@@ -332,6 +476,7 @@
     var n_Kazakhstan = 0;
     var n_Kenya = 0;
     var n_Kiribati = 0;
+    var n_Kosovo = 0;
     var n_Kuwait = 0;
     var n_South_Korea = 0;
     var n_North_Korea = 0;
@@ -392,9 +537,11 @@
     var n_Singapore = 0;
     var n_Slovakia = 0;
     var n_Slovenia = 0;
+    var n_Svalbard = 0;
     var n_Solomon_Islands = 0;
     var n_Somalia = 0;
     var n_South_Africa = 0;
+    var n_South_Sudan = 0;
     var n_Sri_Lanka = 0;
     var n_Sudan = 0;
     var n_Suriname = 0;
@@ -415,7 +562,7 @@
     var n_United_Arab_Emirates = 0;
     var n_United_Kingdom = 0;
     var n_United_States = 0;
-    var n_Uraguay = 0;
+    var n_Uruguay = 0;
     var n_Uzbekistan = 0;
     var n_Vanuatu = 0;
     var n_Venezuela = 0;
@@ -463,6 +610,7 @@
                     var temp_country = data.docs[cont].country;
                     alert(temp_country);
                     foundCountry(temp_country);
+                    cont = cont +1;
                 }
             }
 
@@ -602,6 +750,9 @@ function foundCountry(country) {
             break;
         case 'Congo':
             n_Congo = n_Congo + 1;
+            break;
+        case 'Congo, the Democratic Republic of the':
+            n_Congo_Republic = n_Congo_Republic + 1;
             break;
         case 'Cook Islands':
             n_Cook_Islands = n_Cook_Islands + 1;
@@ -764,6 +915,9 @@ function foundCountry(country) {
             break;
         case 'Kiribati':
             n_Kiribati = n_Kiribati + 1;
+            break;
+        case 'Kosovo':
+            n_Kosovo = n_Kosovo + 1;
             break;
         case 'Kuwait':
             n_Kuwait = n_Kuwait + 1;
@@ -945,6 +1099,9 @@ function foundCountry(country) {
         case 'Slovenia':
             n_Slovenia = n_Slovenia + 1;
             break;
+        case 'Svalbard':
+            n_Svalbard = n_Svalbard + 1;
+            break;
         case 'Solomon Islands':
             n_Solomon_Islands = n_Solomon_Islands + 1;
             break;
@@ -953,6 +1110,9 @@ function foundCountry(country) {
             break;
         case 'South Africa':
             n_South_Africa = n_South_Africa + 1;
+            break;
+        case 'South Sudan':
+            n_South_Sudan = n_South_Sudan + 1;
             break;
         case 'Sri Lanka':
             n_Sri_Lanka = n_Sri_Lanka + 1;
@@ -1014,8 +1174,8 @@ function foundCountry(country) {
         case 'United States':
             n_United_States = n_United_States + 1;
             break;
-        case 'Uraguay':
-            n_Uraguay = n_Uraguay + 1;
+        case 'Uruguay':
+            n_Uruguay = n_Uruguay + 1;
             break;
         case 'Uzbekistan':
             n_Uzbekistan = n_Uzbekistan + 1;
