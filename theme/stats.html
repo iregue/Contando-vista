@@ -610,16 +610,16 @@
         $.get("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date, function( data ) {
             //var a = data.docs[0].date;
             //var b = data.docs[1].date;
-            alert("get init");
+            //alert("get init");
             var total = data.total;
             var limit = data.limit;
             var pages = data.pages;
-            alert("limit: "+limit);
-            alert(total);
+            //alert("limit: "+limit);
+            //alert(total);
             //var pages = Math.floor(total / limit);//Division entera
-            alert("paginas: " + pages);
+            //alert("paginas: " + pages);
             var resto = total % limit;
-            alert("nº elementos: " + resto);
+            //alert("nº elementos: " + resto);
             var pagesCounter = 1;
             if(pages==1){
                 var cont = 0;
@@ -1500,8 +1500,6 @@ function foundCountry(country) {
     //google.charts.setOnLoadCallback(drawBasic);
 
     //function drawBasic() {
-
-
     //}
 
 
