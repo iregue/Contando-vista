@@ -53,7 +53,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="registro.html">Registro</a></li>
-                    <li class="active"><a href="stats.html">Analizar</a></li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analizar<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="stats.html">Observaciones por país</a></li>
+                            <li><a href="activity.html">Actividad de estrellas</a></li>
+                        </ul>
+                    </li>
                     <li><a href="about.html">Acerca de</a></li>
                     <li><a href="settings.html">Ajustes</a></li>
                     <li class="dropdown">
@@ -70,48 +76,70 @@
 <!--===================================FORMULARIO=====================================-->
 
         <div class="container mtb">
-            <div class="row col-md-6 col-md-offset-3">
-                <h2>Busqueda de bólidos</h2><br>
-                <h4>Filtra los resultados que desea consultar en función de un lugar y/o una fecha</h4><br>
-            </div>
-            <form>
-                <div class="form-group col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="col-md-3">
+
+                <h2>Observaciones por país</h2>
+                    <br>
+                <h4>Muestra las observaciones emitidas por los usuarios en cada pais </h4>
+                    <br>
+                    <div class="form-group">
+                        <label for="evento">Selecciona evento</label>
+                        <select class="form-control" id="evento">
+                            <option value="Geminidas16">Geminidas 2016</option>
+                            <option>Perseidas16</option>
+                        </select>
+                    </div>
+
+                    <div class="row col-xs-offset-1">
+                        <button type="button" onclick="getData()" class="btn btn-danger">Enviar</button>
+                    </div>
+                    <div class="row col-xs-offset-1"><br>
+                        <button type="button" onclick="clearAl()" class="btn btn-primary">Limpiar mapa</button>
+                    </div>
+            <!--<form>
+                <div class="form-group">
                     <label>Latitud</label>
                     <input type="text" name="latitude" id="latitude" class="form-control" placeholder="">
                 </div>
-                <div class="form-group col-md-6 col-md-offset-3">
+                <div class="form-group">
                     <label>Longitud</label>
                     <input type="text" name="longitude" id="longitude" class="form-control" placeholder="">
                 </div>
-                <div class="form-group col-md-6 col-md-offset-3">
+                <div class="form-group">
                     <label>Distancia máxima a [Latitud,Longitud] en Km</label>
                     <input type="text" name="distance" id="distance" class="form-control" pattern="^[\d.]+$" placeholder="" >
                 </div>
-                <div class="form-group col-md-6 col-md-offset-3">
+                <div class="form-group">
                     <label>Fecha de inicio</label>
                     <input type="text" class="form-control" name="start_date" id="start_date" placeholder="">
                 </div>
-                <div class="form-group col-md-6 col-md-offset-3">
+                <div class="form-group">
                     <label>Fecha final</label>
                     <input type="text" class="form-control" name="end_date" id="end_date" placeholder="">
                 </div>
-                <div class="row col-md-6 col-md-offset-3">
+                <div class="row">
                     <button type="button" onclick="getData()" class="btn btn-danger btn-lg">Enviar</button>
                 </div>
-            <div class="row col-md-6 col-md-offset-3"><br>
+            <div class="row"><br>
                     <button type="button" onclick="clearAl()" class="btn btn-primary btn-md">Limpiar mapa</button>
                 </div>
-            </form>
+            </form>-->
+                </div>
             <br>
-            <div class="row col-md-6 col-md-offset-3">
+                <div class="col-md-9">
+
                 <h4>Observaciones por países</h4><br>
-            </div>
-           <div class="row col-md-12" id="regions_div"></div>
-            <div class="row col-md-6 col-md-offset-3">
+
+           <div class="row" id="regions_div"></div>
+            <!--<div class="row col-md-6 col-md-offset-3">
                 <h4>Observaciones por fecha</h4>
             </div>
-            <div class="row col-md-12" id="chart_div"></div>
+            <div class="row col-md-12" id="chart_div"></div>-->
+                </div>
+            </div>
         </div>
+
 
     <!-- *****************************************************************************************************************
     FOOTER
@@ -182,7 +210,7 @@
 
     }
 
-    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-bottom"};
+    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
 
     </script>
 <script>
@@ -597,42 +625,41 @@
         var _distance= $('#distance').val();
         var _start_date= $('#start_date').val();
         var _end_date= $('#end_date').val();
-
-        $.cookie('latitude2', _latitude);
+        var eventoactual= $('#evento').val();
+        /*$.cookie('latitude2', _latitude);
         $.cookie('longitude2', _longitude);
         $.cookie('distance2', _distance);
         $.cookie('startdate2', _start_date);
-        $.cookie('enddate2', _end_date);
+        $.cookie('enddate2', _end_date);*/
 
-        alert("start");
+        alert("evento actual: "+ eventoactual);
         //alert("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date);
 
-        $.get("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date, function( data ) {
+        $.get("http://localhost/api/observations?event="+ eventoactual, function( data ) {
             //var a = data.docs[0].date;
             //var b = data.docs[1].date;
-            //alert("get init");
+            alert("get init");
             var total = data.total;
             var limit = data.limit;
             var pages = data.pages;
-            //alert("limit: "+limit);
-            //alert(total);
-            //var pages = Math.floor(total / limit);//Division entera
-            //alert("paginas: " + pages);
+            alert("limit: "+limit);
+            alert(total);
+            alert("paginas: " + pages);
             var resto = total % limit;
-            //alert("nº elementos: " + resto);
+            alert("nº elementos: " + resto);
             var pagesCounter = 1;
             if(pages==1){
                 var cont = 0;
                 while (cont < resto) {
                     var temp_country = data.docs[cont].country;
-                    //alert(temp_country);
+                    alert(temp_country);
                     foundCountry(temp_country);
                     cont = cont + 1;
                 }
             }
             else {
                 while (pagesCounter < pages) {
-                    $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&pages=" + pagesCounter, function (data) {
+                    $.get("http://localhost/api/observations?event="+eventoactual+ "&pages=" + pagesCounter, function (data) {
                         var elementCounter = 0;
                         while (elementCounter < limit) {
                             var temp_country = data.docs[elementCounter].country;
@@ -644,7 +671,8 @@
                     pagesCounter = pagesCounter + 1;
                 }
                 while (pagesCounter == pages) {
-                    $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&pages=" + pagesCounter, function (data) {
+                    $.get("http://localhost/api/observations?event=" + eventoactual +"&pages=" + pagesCounter, function (data) {
+                    //$.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&pages=" + pagesCounter, function (data) {
                         var elementCounter = 0;
                         while (elementCounter < resto) {
                             var temp_country = data.docs[elementCounter].country;
@@ -1247,8 +1275,8 @@ function foundCountry(country) {
         default: non_found =non_found +1;
     }
 }
-    google.charts.load('current', {packages: ['corechart', 'bar']});
-    //google.charts.load('upcoming', {'packages':['geochart']});
+    //google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.load('upcoming', {'packages':['geochart']});
     google.charts.setOnLoadCallback(drawRegionsMap);
 
 
@@ -1458,7 +1486,7 @@ function foundCountry(country) {
 
         chart.draw(data, options);
 
-        var data1 = new google.visualization.DataTable();
+        /*var data1 = new google.visualization.DataTable();
         data1.addColumn('timeofday', 'Time of Day');
         data1.addColumn('number', 'Motivation Level');
 
@@ -1493,7 +1521,7 @@ function foundCountry(country) {
         var chart1 = new google.visualization.ColumnChart(
                 document.getElementById('chart_div'));
 
-        chart1.draw(data1, options1);
+        chart1.draw(data1, options1);*/
     }
 
 
