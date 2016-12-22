@@ -97,34 +97,6 @@
                     <div class="row col-xs-offset-1"><br>
                         <button type="button" onclick="clearAl()" class="btn btn-primary">Limpiar mapa</button>
                     </div>
-            <!--<form>
-                <div class="form-group">
-                    <label>Latitud</label>
-                    <input type="text" name="latitude" id="latitude" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Longitud</label>
-                    <input type="text" name="longitude" id="longitude" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Distancia máxima a [Latitud,Longitud] en Km</label>
-                    <input type="text" name="distance" id="distance" class="form-control" pattern="^[\d.]+$" placeholder="" >
-                </div>
-                <div class="form-group">
-                    <label>Fecha de inicio</label>
-                    <input type="text" class="form-control" name="start_date" id="start_date" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Fecha final</label>
-                    <input type="text" class="form-control" name="end_date" id="end_date" placeholder="">
-                </div>
-                <div class="row">
-                    <button type="button" onclick="getData()" class="btn btn-danger btn-lg">Enviar</button>
-                </div>
-            <div class="row"><br>
-                    <button type="button" onclick="clearAl()" class="btn btn-primary btn-md">Limpiar mapa</button>
-                </div>
-            </form>-->
                 </div>
             <br>
                 <div class="col-md-9">
@@ -132,10 +104,6 @@
                 <h4>Observaciones por países</h4><br>
 
            <div class="row" id="regions_div"></div>
-            <!--<div class="row col-md-6 col-md-offset-3">
-                <h4>Observaciones por fecha</h4>
-            </div>
-            <div class="row col-md-12" id="chart_div"></div>-->
                 </div>
             </div>
         </div>
@@ -607,30 +575,11 @@
         drawRegionsMap();
 
 
-        /*$.cookie('latitude2','');
-        $.cookie('longitude2', '');
-        $.cookie('distance2', '');
-        $.cookie('startdate2', '');
-        $.cookie('enddate2', '');
-        $('#latitude').val($.cookie('latitude2'));
-        $('#longitude').val($.cookie('longitude2'));
-        $('#distance').val($.cookie('distance2'));
-        $('#start_date').val($.cookie('startdate2'));
-        $('#end_date').val($.cookie('enddate2'));*/
+
     }
 
     function getData() {
-        var _latitude= $('#latitude').val();
-        var _longitude= $('#longitude').val();
-        var _distance= $('#distance').val();
-        var _start_date= $('#start_date').val();
-        var _end_date= $('#end_date').val();
-        var eventoactual= $('#evento').val();
-        /*$.cookie('latitude2', _latitude);
-        $.cookie('longitude2', _longitude);
-        $.cookie('distance2', _distance);
-        $.cookie('startdate2', _start_date);
-        $.cookie('enddate2', _end_date);*/
+
 
         alert("evento actual: "+ eventoactual);
         //alert("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date);
@@ -1275,7 +1224,7 @@ function foundCountry(country) {
         default: non_found =non_found +1;
     }
 }
-    //google.charts.load('current', {packages: ['corechart', 'bar']});
+
     google.charts.load('upcoming', {'packages':['geochart']});
     google.charts.setOnLoadCallback(drawRegionsMap);
 
@@ -1485,57 +1434,8 @@ function foundCountry(country) {
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
         chart.draw(data, options);
-
-        /*var data1 = new google.visualization.DataTable();
-        data1.addColumn('timeofday', 'Time of Day');
-        data1.addColumn('number', 'Motivation Level');
-
-        data1.addRows([
-            [{v: [8, 0, 0], f: '8 am'}, 1],
-            [{v: [9, 0, 0], f: '9 am'}, 2],
-            [{v: [10, 0, 0], f:'10 am'}, 3],
-            [{v: [11, 0, 0], f: '11 am'}, 4],
-            [{v: [12, 0, 0], f: '12 pm'}, 5],
-            [{v: [13, 0, 0], f: '1 pm'}, 6],
-            [{v: [14, 0, 0], f: '2 pm'}, 7],
-            [{v: [15, 0, 0], f: '3 pm'}, 8],
-            [{v: [16, 0, 0], f: '4 pm'}, 9],
-            [{v: [17, 0, 0], f: '5 pm'}, 10]
-        ]);
-
-        var options1 = {
-            title: 'Observaciones for fecha',
-            hAxis: {
-                title: 'Time of Day',
-                format: 'h:mm a',
-                viewWindow: {
-                    min: [7, 30, 0],
-                    max: [17, 30, 0]
-                }
-            },
-            vAxis: {
-                title: 'Rating (scale of 1-10)'
-            }
-        };
-
-        var chart1 = new google.visualization.ColumnChart(
-                document.getElementById('chart_div'));
-
-        chart1.draw(data1, options1);*/
     }
 
-
-    //google.charts.setOnLoadCallback(drawBasic);
-
-    //function drawBasic() {
-    //}
-
-
-    $('#latitude').val($.cookie('latitude2'));
-    $('#longitude').val($.cookie('longitude2'));
-    $('#distance').val($.cookie('distance2'));
-    $('#start_date').val($.cookie('startdate2'));
-    $('#end_date').val($.cookie('enddate2'));
 </script>
 </body>
 </html>
