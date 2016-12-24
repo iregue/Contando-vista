@@ -203,12 +203,14 @@ var _longitude= $('#longitude').val();
 var _distance= $('#distance').val();
 var _start_date= $('#start_date').val();
 var _end_date= $('#end_date').val();
+var _detail = $('#nivel_detalle').val();
 
-$.cookie('latitude2', _latitude);
- $.cookie('longitude2', _longitude);
- $.cookie('distance2', _distance);
- $.cookie('startdate2', _start_date);
- $.cookie('enddate2', _end_date);
+$.cookie('latitude3', _latitude);
+ $.cookie('longitude3', _longitude);
+ $.cookie('distance3', _distance);
+ $.cookie('startdate3', _start_date);
+ $.cookie('enddate3', _end_date);
+ $.cookie('detail', _detail);
 
 
 /*$.cookie('latitude2','');
@@ -216,11 +218,12 @@ $.cookie('latitude2', _latitude);
  $.cookie('distance2', '');
  $.cookie('startdate2', '');
  $.cookie('enddate2', '');*/
- $('#latitude').val($.cookie('latitude2'));
- $('#longitude').val($.cookie('longitude2'));
- $('#distance').val($.cookie('distance2'));
- $('#start_date').val($.cookie('startdate2'));
- $('#end_date').val($.cookie('enddate2'));
+ $('#latitude').val($.cookie('latitude3'));
+ $('#longitude').val($.cookie('longitude3'));
+ $('#distance').val($.cookie('distance3'));
+ $('#start_date').val($.cookie('startdate3'));
+ $('#end_date').val($.cookie('enddate3'));
+ $('#nivel_detalle').val($.cookie('detail'));
 
     //2016-12-22T16:42:55.929Z
 
@@ -231,15 +234,203 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
     var total = data.total;
     var limit = data.limit;
     var pages = data.pages;
-    alert("limit: "+limit);
-    alert(total);
-    alert("paginas: " + pages);
     var resto = total % limit;
-    alert("nº elementos: " + resto);
     var pagesCounter = 1;
+    var temp_date = data.docs[0].date;
+    var date0 = temp_date.split("T");
+    var date1 = date0[0].split("-");
+    var start_year = date1[0];
+    var start_month = date1[1];
+    var start_day = date1[2];
+    var date2 = date0[1].split(".");
+    var date3 = date2[0].split(":");
+    var start_hours = date3[0];
+    var start_minutes = date3[1];
+    var start_seconds = date3[2];
+    var next_section_minutes = start_minutes;
+    var next_section_hours = start_hours;
+    var next_section_days = start_day;
+    var next_section_month = start_month;
+    var next_section_year = start_year;
+
+    if(_detail==30){
+        next_section_minutes = next_section_minutes + 30;
+        if(next_section_minutes> 60){
+            next_section_minutes = next_section_minutes - 60;
+            next_section_hours = next_section_hours + 1;
+            if(next_section_hours>24){
+                next_section_hours = 0;
+                next_section_days = next_section_days +1;
+                if(next_section_days == 29 && next_section_month == 2){
+                    //case febrero
+                    next_section_days = 0;
+                    next_section_month = 3;
+                }
+                if(next_section_days == 31 && (next_section_month== 4 || next_section_month == 6 || next_section_month == 9 || next_section_month ==1)){
+                    //caso abril, junio, septiembre, noviembre
+                    next_section_days = 0;
+                    if(next_section_month == 4){
+                        next_section_month = 5;
+                    }
+                    if(next_section_month == 6){
+                    next_section_month = 7;
+
+                }
+                    if(next_section_month == 9){
+                    next_section_month = 10;
+
+                }
+                    if(next_section_month == 11){
+                    next_section_month = 12;
+
+                }
+                }
+                if(next_section_days == 32){
+                    if(next_section_month == 1){
+                        next_section_month =2;
+                    }
+                    if(next_section_month == 3){
+                        next_section_month = 4;
+                    }
+                    if(next_section_month == 5){
+                        next_section_month = 6;
+                    }
+                    if(next_section_month == 7){
+                        next_section_month = 8;
+                    }
+                    if(next_section_month == 8){
+                        next_section_month = 9;
+
+                    }
+                    if(next_section_month == 10){
+                        next_section_month = 11;
+
+                    }
+                    if(next_section_month == 12){
+                        next_section_month = 1;
+                        next_section_year = next_section_year + 1;
+
+                    }
+                }
+            }
+        }
+    }
+    if(_detail==60){
+        next_section_hours = next_section_hours + 1;
+        if(next_section_hours>24){
+            next_section_hours = 0;
+            next_section_days = next_section_days +1;
+            if(next_section_days == 29 && next_section_month == 2){
+                //case febrero
+                next_section_days = 0;
+                next_section_month = 3;
+            }
+            if(next_section_days == 31 && (next_section_month== 4 || next_section_month == 6 || next_section_month == 9 || next_section_month ==1)){
+                //caso abril, junio, septiembre, noviembre
+                next_section_days = 0;
+                if(next_section_month == 4){
+                    next_section_month = 5;
+                }
+                if(next_section_month == 6){
+                    next_section_month = 7;
+
+                }
+                if(next_section_month == 9){
+                    next_section_month = 10;
+
+                }
+                if(next_section_month == 11){
+                    next_section_month = 12;
+
+                }
+            }
+            if(next_section_days == 32){
+                if(next_section_month == 1){
+                    next_section_month =2;
+                }
+                if(next_section_month == 3){
+                    next_section_month = 4;
+                }
+                if(next_section_month == 5){
+                    next_section_month = 6;
+                }
+                if(next_section_month == 7){
+                    next_section_month = 8;
+                }
+                if(next_section_month == 8){
+                    next_section_month = 9;
+
+                }
+                if(next_section_month == 10){
+                    next_section_month = 11;
+
+                }
+                if(next_section_month == 12){
+                    next_section_month = 1;
+                    next_section_year = next_section_year + 1;
+
+                }
+            }
+        }
+    }
+    if(_detail==1440){
+        next_section_days = next_section_days +1;
+        if(next_section_days == 29 && next_section_month == 2){
+            //case febrero
+            next_section_days = 0;
+            next_section_month = 3;
+        }
+        if(next_section_days == 31 && (next_section_month== 4 || next_section_month == 6 || next_section_month == 9 || next_section_month ==1)){
+            //caso abril, junio, septiembre, noviembre
+            next_section_days = 0;
+            if(next_section_month == 4){
+                next_section_month = 5;
+            }
+            if(next_section_month == 6){
+                next_section_month = 7;
+
+            }
+            if(next_section_month == 9){
+                next_section_month = 10;
+
+            }
+            if(next_section_month == 11){
+                next_section_month = 12;
+
+            }
+        }
+        if(next_section_days == 32){
+            if(next_section_month == 1){
+                next_section_month =2;
+            }
+            if(next_section_month == 3){
+                next_section_month = 4;
+            }
+            if(next_section_month == 5){
+                next_section_month = 6;
+            }
+            if(next_section_month == 7){
+                next_section_month = 8;
+            }
+            if(next_section_month == 8){
+                next_section_month = 9;
+
+            }
+            if(next_section_month == 10){
+                next_section_month = 11;
+
+            }
+            if(next_section_month == 12){
+                next_section_month = 1;
+                next_section_year = next_section_year + 1;
+
+            }
+        }
+    }
 
     if(pages==1){
         var cont = 0;
+        var contAux = cont +1;
         while (cont < resto) {
             var temp_date = data.docs[cont].date;
             var date0 = temp_date.split("T");
@@ -252,10 +443,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             var _hours = date3[0];
             var _minutes = date3[1];
             var _seconds = date3[2];
-            var contAux = cont +1;
             if(contAux < resto){
-                var same_activity = true;
-                while(same_activity= true) {
                     var temp_date2 = data.docs[contAux].date;
                     var date02 = temp_date2.split("T");
                     var date12 = date02[0].split("-");
@@ -268,7 +456,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _minutes2 = date32[1];
                     var _seconds2 = date32[2];
 
-
+                    /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
                     if(_seconds > 54 && _minutes ==59 && _hours ==23){
                         var check_seconds = _seconds +5 - 60;
                         var check_minutes = 0;
@@ -284,15 +472,20 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                         var check_minutes = _minutes +1;
                         var check_hours = _hours +1;
                     }
-                    if(_year == _year2 && _month == _month2 && _day == _day2) {
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                ///////////// CHECK de misma observacion    ////////////////////////////////////////////////////////////////
+                if(_year == _year2 && _month == _month2 && _day == _day2) {
                         var temp_second = _seconds + 5;
                         if (_hours == _hours2 && _minutes == _minutes2 && temp_second > _seconds2) {
                             //Coincide observacion
+                            contAux = contAux +1;
                         } else {
                             //no coincide observacion
+
                         }
                         if (check_hours == _hours2 && check_minutes == _minutes2 && check_seconds > _seconds2) {
                             //coincide observacion
+                            contAux = contAux +1;
                         } else {
                             //no coincide observacion
                         }
@@ -300,13 +493,15 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     else{
                         //no coincide
                     }
-                }
             }
             else{
                 //no hay otra observacion para comparar con la anterior
             }
             cont = cont + 1;
         }
+    }
+    else{
+        //Page > 1
     }
    /* while (elementCounter < resto) {
         var temp_country = data.docs[elementCounter].country;
