@@ -222,18 +222,102 @@ $.cookie('latitude2', _latitude);
  $('#start_date').val($.cookie('startdate2'));
  $('#end_date').val($.cookie('enddate2'));
 
-$.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&pages=" + pagesCounter, function (data) {
-    var elementCounter = 0;
-    while (elementCounter < resto) {
+    //2016-12-22T16:42:55.929Z
+
+
+$.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date, function (data) {
+    alert("start");
+
+    var total = data.total;
+    var limit = data.limit;
+    var pages = data.pages;
+    alert("limit: "+limit);
+    alert(total);
+    alert("paginas: " + pages);
+    var resto = total % limit;
+    alert("nº elementos: " + resto);
+    var pagesCounter = 1;
+
+    if(pages==1){
+        var cont = 0;
+        while (cont < resto) {
+            var temp_date = data.docs[cont].date;
+            var date0 = temp_date.split("T");
+            var date1 = date0[0].split("-");
+            var _year = date1[0];
+            var _month = date1[1];
+            var _day = date1[2];
+            var date2 = date0[1].split(".");
+            var date3 = date2[0].split(":");
+            var _hours = date3[0];
+            var _minutes = date3[1];
+            var _seconds = date3[2];
+            var contAux = cont +1;
+            if(contAux < resto){
+                var same_activity = true;
+                while(same_activity= true) {
+                    var temp_date2 = data.docs[contAux].date;
+                    var date02 = temp_date2.split("T");
+                    var date12 = date02[0].split("-");
+                    var _year2 = date12[0];
+                    var _month2 = date12[1];
+                    var _day2 = date12[2];
+                    var date22 = date02[1].split(".");
+                    var date32 = date22[0].split(":");
+                    var _hours2 = date32[0];
+                    var _minutes2 = date32[1];
+                    var _seconds2 = date32[2];
+
+
+                    if(_seconds > 54 && _minutes ==59 && _hours ==23){
+                        var check_seconds = _seconds +5 - 60;
+                        var check_minutes = 0;
+                        var check_hours = 0;
+                    }
+                    if(_seconds > 54 && _minutes == 59 && _hours != 23){
+                        var check_seconds = _seconds +5 - 60;
+                        var check_minutes = 0;
+                        var check_hours = _hours +1;
+                    }
+                    if(_seconds > 54 && _minutes != 59 && _hours != 23){
+                        var check_seconds = _seconds +5 - 60;
+                        var check_minutes = _minutes +1;
+                        var check_hours = _hours +1;
+                    }
+                    if(_year == _year2 && _month == _month2 && _day == _day2) {
+                        var temp_second = _seconds + 5;
+                        if (_hours == _hours2 && _minutes == _minutes2 && temp_second > _seconds2) {
+                            //Coincide observacion
+                        } else {
+                            //no coincide observacion
+                        }
+                        if (check_hours == _hours2 && check_minutes == _minutes2 && check_seconds > _seconds2) {
+                            //coincide observacion
+                        } else {
+                            //no coincide observacion
+                        }
+                    }
+                    else{
+                        //no coincide
+                    }
+                }
+            }
+            else{
+                //no hay otra observacion para comparar con la anterior
+            }
+            cont = cont + 1;
+        }
+    }
+   /* while (elementCounter < resto) {
         var temp_country = data.docs[elementCounter].country;
         //alert(temp_country);
         foundCountry(temp_country);
         elementCounter = elementCounter + 1;
-    }
+    }*/
 });
 
 }
-var res = str.split("-",1);
+//var res = str.split("-",1);
     google.charts.load('current', {'packages':['corechart', 'line']});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -333,26 +417,8 @@ var res = str.split("-",1);
             }
         };
 
-        /* var logOptions = {
-         title: 'World Population Since 1400 A.D. in Log Scale',
-         legend: 'none',
-         width: 450,
-         height: 500,
-         hAxis: {
-         title: 'Date'
-         },
-         vAxis: {
-         title: 'Population (millions)',
-         scaleType: 'log',
-         ticks: [0, 1000, 2000, 4000, 6000]
-         }
-         };*/
-
         var linearChart = new google.visualization.LineChart(document.getElementById('chart_div'));
         linearChart.draw(data, linearOptions);
-
-        /* var logChart = new google.visualization.LineChart(document.getElementById('log_div'));
-         logChart.draw(data, logOptions);*/
     }
 </script>
 </html>
