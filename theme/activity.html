@@ -252,7 +252,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
     var next_section_days = start_day;
     var next_section_month = start_month;
     var next_section_year = start_year;
-
+//Calcula el siguiente nivel de detalle
     if(_detail==30){
         next_section_minutes = next_section_minutes + 30;
         if(next_section_minutes> 60){
@@ -635,6 +635,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _seconds2 = date32[2];
 
                     /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
+                //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
                     if(_seconds > 54 && _minutes ==59 && _hours ==23){
                         var check_seconds = _seconds +5 - 60;
                         var check_minutes = 0;
@@ -651,7 +652,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                         var check_hours = _hours +1;
                     }
                     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-                ///////////// CHECK de misma observacion    ////////////////////////////////////////////////////////////////
+                ///////////// CHECK de misma observacion  /////////////////////////////////////
                 if(_year == _year2 && _month == _month2 && _day == _day2) {
                         var temp_second = _seconds + 5;
                         if (_hours == _hours2 && _minutes == _minutes2 && temp_second > _seconds2) {
@@ -681,6 +682,9 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 //no hay otra observacion para comparar con la anterior
             }
             cont = cont + 1;
+        }
+        if(contador_row != 0){
+            //ADDROW
         }
     }
     else{
