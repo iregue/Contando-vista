@@ -432,14 +432,14 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         var cont = 0;
         var contAux = cont +1;
         while (cont < resto) {
-            var temp_date = data.docs[cont].date;
-            var date0 = temp_date.split("T");
-            var date1 = date0[0].split("-");
+             temp_date = data.docs[cont].date;
+             date0 = temp_date.split("T");
+             date1 = date0[0].split("-");
             var _year = date1[0];
             var _month = date1[1];
             var _day = date1[2];
-            var date2 = date0[1].split(".");
-            var date3 = date2[0].split(":");
+             date2 = date0[1].split(".");
+             date3 = date2[0].split(":");
             var _hours = date3[0];
             var _minutes = date3[1];
             var _seconds = date3[2];
@@ -709,8 +709,584 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             //ADDROW final de bucle
         }
     }
-    else{
+    else {
         //Page > 1
+
+        var cont = 0;
+        var contAux = cont + 1;
+        while (pagesCounter < pages) {
+            $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + pagesCounter, function (data) {
+
+                while (cont < limit) {
+                    temp_date = data.docs[cont].date;
+                    date0 = temp_date.split("T");
+                    date1 = date0[0].split("-");
+                    var _year = date1[0];
+                    var _month = date1[1];
+                    var _day = date1[2];
+                    date2 = date0[1].split(".");
+                    date3 = date2[0].split(":");
+                    var _hours = date3[0];
+                    var _minutes = date3[1];
+                    var _seconds = date3[2];
+                    if (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
+                        //PETICION ADDROW
+                        if (_detail == 30) {
+                            next_section_minutes = next_section_minutes + 30;
+                            if (next_section_minutes > 60) {
+                                next_section_minutes = next_section_minutes - 60;
+                                next_section_hours = next_section_hours + 1;
+                                if (next_section_hours > 24) {
+                                    next_section_hours = 0;
+                                    next_section_days = next_section_days + 1;
+                                    if (next_section_days == 29 && next_section_month == 2) {
+                                        //case febrero
+                                        next_section_days = 0;
+                                        next_section_month = 3;
+                                    }
+                                    if (next_section_days == 31 && (next_section_month == 4 || next_section_month == 6 || next_section_month == 9 || next_section_month == 1)) {
+                                        //caso abril, junio, septiembre, noviembre
+                                        next_section_days = 0;
+                                        if (next_section_month == 4) {
+                                            next_section_month = 5;
+                                        }
+                                        if (next_section_month == 6) {
+                                            next_section_month = 7;
+
+                                        }
+                                        if (next_section_month == 9) {
+                                            next_section_month = 10;
+
+                                        }
+                                        if (next_section_month == 11) {
+                                            next_section_month = 12;
+
+                                        }
+                                    }
+                                    if (next_section_days == 32) {
+                                        if (next_section_month == 1) {
+                                            next_section_month = 2;
+                                        }
+                                        if (next_section_month == 3) {
+                                            next_section_month = 4;
+                                        }
+                                        if (next_section_month == 5) {
+                                            next_section_month = 6;
+                                        }
+                                        if (next_section_month == 7) {
+                                            next_section_month = 8;
+                                        }
+                                        if (next_section_month == 8) {
+                                            next_section_month = 9;
+
+                                        }
+                                        if (next_section_month == 10) {
+                                            next_section_month = 11;
+
+                                        }
+                                        if (next_section_month == 12) {
+                                            next_section_month = 1;
+                                            next_section_year = next_section_year + 1;
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (_detail == 60) {
+                            next_section_hours = next_section_hours + 1;
+                            if (next_section_hours > 24) {
+                                next_section_hours = 0;
+                                next_section_days = next_section_days + 1;
+                                if (next_section_days == 29 && next_section_month == 2) {
+                                    //case febrero
+                                    next_section_days = 0;
+                                    next_section_month = 3;
+                                }
+                                if (next_section_days == 31 && (next_section_month == 4 || next_section_month == 6 || next_section_month == 9 || next_section_month == 1)) {
+                                    //caso abril, junio, septiembre, noviembre
+                                    next_section_days = 0;
+                                    if (next_section_month == 4) {
+                                        next_section_month = 5;
+                                    }
+                                    if (next_section_month == 6) {
+                                        next_section_month = 7;
+
+                                    }
+                                    if (next_section_month == 9) {
+                                        next_section_month = 10;
+
+                                    }
+                                    if (next_section_month == 11) {
+                                        next_section_month = 12;
+
+                                    }
+                                }
+                                if (next_section_days == 32) {
+                                    if (next_section_month == 1) {
+                                        next_section_month = 2;
+                                    }
+                                    if (next_section_month == 3) {
+                                        next_section_month = 4;
+                                    }
+                                    if (next_section_month == 5) {
+                                        next_section_month = 6;
+                                    }
+                                    if (next_section_month == 7) {
+                                        next_section_month = 8;
+                                    }
+                                    if (next_section_month == 8) {
+                                        next_section_month = 9;
+
+                                    }
+                                    if (next_section_month == 10) {
+                                        next_section_month = 11;
+
+                                    }
+                                    if (next_section_month == 12) {
+                                        next_section_month = 1;
+                                        next_section_year = next_section_year + 1;
+
+                                    }
+                                }
+                            }
+                        }
+                        if (_detail == 1440) {
+                            next_section_days = next_section_days + 1;
+                            if (next_section_days == 29 && next_section_month == 2) {
+                                //case febrero
+                                next_section_days = 0;
+                                next_section_month = 3;
+                            }
+                            if (next_section_days == 31 && (next_section_month == 4 || next_section_month == 6 || next_section_month == 9 || next_section_month == 1)) {
+                                //caso abril, junio, septiembre, noviembre
+                                next_section_days = 0;
+                                if (next_section_month == 4) {
+                                    next_section_month = 5;
+                                }
+                                if (next_section_month == 6) {
+                                    next_section_month = 7;
+
+                                }
+                                if (next_section_month == 9) {
+                                    next_section_month = 10;
+
+                                }
+                                if (next_section_month == 11) {
+                                    next_section_month = 12;
+
+                                }
+                            }
+                            if (next_section_days == 32) {
+                                if (next_section_month == 1) {
+                                    next_section_month = 2;
+                                }
+                                if (next_section_month == 3) {
+                                    next_section_month = 4;
+                                }
+                                if (next_section_month == 5) {
+                                    next_section_month = 6;
+                                }
+                                if (next_section_month == 7) {
+                                    next_section_month = 8;
+                                }
+                                if (next_section_month == 8) {
+                                    next_section_month = 9;
+
+                                }
+                                if (next_section_month == 10) {
+                                    next_section_month = 11;
+
+                                }
+                                if (next_section_month == 12) {
+                                    next_section_month = 1;
+                                    next_section_year = next_section_year + 1;
+
+                                }
+                            }
+                        }
+                        contador_row = 0;
+                    }
+                    var found = false;
+
+                    if (contAux < limit) {
+                        var temp_date2 = data.docs[contAux].date;
+                        var date02 = temp_date2.split("T");
+                        var date12 = date02[0].split("-");
+                        var _year2 = date12[0];
+                        var _month2 = date12[1];
+                        var _day2 = date12[2];
+                        var date22 = date02[1].split(".");
+                        var date32 = date22[0].split(":");
+                        var _hours2 = date32[0];
+                        var _minutes2 = date32[1];
+                        var _seconds2 = date32[2];
+
+                        /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
+                        //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
+                        if (_seconds > 54 && _minutes == 59 && _hours == 23) {
+                            var check_seconds = _seconds + 5 - 60;
+                            var check_minutes = 0;
+                            var check_hours = 0;
+                        }
+                        if (_seconds > 54 && _minutes == 59 && _hours != 23) {
+                            var check_seconds = _seconds + 5 - 60;
+                            var check_minutes = 0;
+                            var check_hours = _hours + 1;
+                        }
+                        if (_seconds > 54 && _minutes != 59 && _hours != 23) {
+                            var check_seconds = _seconds + 5 - 60;
+                            var check_minutes = _minutes + 1;
+                            var check_hours = _hours + 1;
+                        }
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ///////////// CHECK de misma observacion  /////////////////////////////////////
+                        if (_year == _year2 && _month == _month2 && _day == _day2) {
+                            var temp_second = _seconds + 5;
+                            if (_hours == _hours2 && _minutes == _minutes2 && temp_second > _seconds2) {
+                                //Coincide observacion
+                                //contAux = contAux +1;
+                                found = true;
+                            } else {
+                                //no coincide observacion
+                                if (_seconds > 54 && _seconds2 < 5) {
+                                    found = false;
+                                }
+                                else {
+                                    contador_row = contador_row + 1;
+                                    found = true;
+                                }
+
+                            }
+                            if (check_hours == _hours2 && check_minutes == _minutes2 && check_seconds > _seconds2 && found == false) {
+                                //coincide observacion
+                                //contAux = contAux +1;
+                                found = true;
+                            } else {
+                                //no coincide observacion
+                                //contador_row = contador_row +1;
+                                found = false;
+
+                            }
+                        }
+                        else {
+                            //no coincide
+                            //contador_row = contador_row +1;
+                            found = false;
+
+                        }
+                    }
+                    else {
+                        //no hay otra observacion para comparar con la anterior
+                    }
+                    //Se actualiza siguiente observaciones a analizar
+                    //Si coinciden las 2 ultimas observaciones analizadas, Se pasa a analizar la siguiente observacion
+                    if (found == true) {
+                        contAux = contAux + 1;
+                    }
+                    else {
+                        //si no coinciden las observaciones, por lo que son 2 distintas, se añade 1 al contador_row
+                        cont = contAux;
+                        contAux = contAux + 1;
+                        contador_row = contador_row + 1;
+
+                    }
+                }//end while
+            });
+            pagesCounter = pagesCounter + 1;
+        }//end while pages
+        //ultima iteracion
+        while (pagesCounter == pages) {
+            $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + pagesCounter, function (data) {
+
+            var cont = 0;
+            var contAux = cont + 1;
+            while (cont < resto) {
+                temp_date = data.docs[cont].date;
+                date0 = temp_date.split("T");
+                date1 = date0[0].split("-");
+                var _year = date1[0];
+                var _month = date1[1];
+                var _day = date1[2];
+                date2 = date0[1].split(".");
+                date3 = date2[0].split(":");
+                var _hours = date3[0];
+                var _minutes = date3[1];
+                var _seconds = date3[2];
+                if (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
+                    //PETICION ADDROW
+                    if (_detail == 30) {
+                        next_section_minutes = next_section_minutes + 30;
+                        if (next_section_minutes > 60) {
+                            next_section_minutes = next_section_minutes - 60;
+                            next_section_hours = next_section_hours + 1;
+                            if (next_section_hours > 24) {
+                                next_section_hours = 0;
+                                next_section_days = next_section_days + 1;
+                                if (next_section_days == 29 && next_section_month == 2) {
+                                    //case febrero
+                                    next_section_days = 0;
+                                    next_section_month = 3;
+                                }
+                                if (next_section_days == 31 && (next_section_month == 4 || next_section_month == 6 || next_section_month == 9 || next_section_month == 1)) {
+                                    //caso abril, junio, septiembre, noviembre
+                                    next_section_days = 0;
+                                    if (next_section_month == 4) {
+                                        next_section_month = 5;
+                                    }
+                                    if (next_section_month == 6) {
+                                        next_section_month = 7;
+
+                                    }
+                                    if (next_section_month == 9) {
+                                        next_section_month = 10;
+
+                                    }
+                                    if (next_section_month == 11) {
+                                        next_section_month = 12;
+
+                                    }
+                                }
+                                if (next_section_days == 32) {
+                                    if (next_section_month == 1) {
+                                        next_section_month = 2;
+                                    }
+                                    if (next_section_month == 3) {
+                                        next_section_month = 4;
+                                    }
+                                    if (next_section_month == 5) {
+                                        next_section_month = 6;
+                                    }
+                                    if (next_section_month == 7) {
+                                        next_section_month = 8;
+                                    }
+                                    if (next_section_month == 8) {
+                                        next_section_month = 9;
+
+                                    }
+                                    if (next_section_month == 10) {
+                                        next_section_month = 11;
+
+                                    }
+                                    if (next_section_month == 12) {
+                                        next_section_month = 1;
+                                        next_section_year = next_section_year + 1;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (_detail == 60) {
+                        next_section_hours = next_section_hours + 1;
+                        if (next_section_hours > 24) {
+                            next_section_hours = 0;
+                            next_section_days = next_section_days + 1;
+                            if (next_section_days == 29 && next_section_month == 2) {
+                                //case febrero
+                                next_section_days = 0;
+                                next_section_month = 3;
+                            }
+                            if (next_section_days == 31 && (next_section_month == 4 || next_section_month == 6 || next_section_month == 9 || next_section_month == 1)) {
+                                //caso abril, junio, septiembre, noviembre
+                                next_section_days = 0;
+                                if (next_section_month == 4) {
+                                    next_section_month = 5;
+                                }
+                                if (next_section_month == 6) {
+                                    next_section_month = 7;
+
+                                }
+                                if (next_section_month == 9) {
+                                    next_section_month = 10;
+
+                                }
+                                if (next_section_month == 11) {
+                                    next_section_month = 12;
+
+                                }
+                            }
+                            if (next_section_days == 32) {
+                                if (next_section_month == 1) {
+                                    next_section_month = 2;
+                                }
+                                if (next_section_month == 3) {
+                                    next_section_month = 4;
+                                }
+                                if (next_section_month == 5) {
+                                    next_section_month = 6;
+                                }
+                                if (next_section_month == 7) {
+                                    next_section_month = 8;
+                                }
+                                if (next_section_month == 8) {
+                                    next_section_month = 9;
+
+                                }
+                                if (next_section_month == 10) {
+                                    next_section_month = 11;
+
+                                }
+                                if (next_section_month == 12) {
+                                    next_section_month = 1;
+                                    next_section_year = next_section_year + 1;
+
+                                }
+                            }
+                        }
+                    }
+                    if (_detail == 1440) {
+                        next_section_days = next_section_days + 1;
+                        if (next_section_days == 29 && next_section_month == 2) {
+                            //case febrero
+                            next_section_days = 0;
+                            next_section_month = 3;
+                        }
+                        if (next_section_days == 31 && (next_section_month == 4 || next_section_month == 6 || next_section_month == 9 || next_section_month == 1)) {
+                            //caso abril, junio, septiembre, noviembre
+                            next_section_days = 0;
+                            if (next_section_month == 4) {
+                                next_section_month = 5;
+                            }
+                            if (next_section_month == 6) {
+                                next_section_month = 7;
+
+                            }
+                            if (next_section_month == 9) {
+                                next_section_month = 10;
+
+                            }
+                            if (next_section_month == 11) {
+                                next_section_month = 12;
+
+                            }
+                        }
+                        if (next_section_days == 32) {
+                            if (next_section_month == 1) {
+                                next_section_month = 2;
+                            }
+                            if (next_section_month == 3) {
+                                next_section_month = 4;
+                            }
+                            if (next_section_month == 5) {
+                                next_section_month = 6;
+                            }
+                            if (next_section_month == 7) {
+                                next_section_month = 8;
+                            }
+                            if (next_section_month == 8) {
+                                next_section_month = 9;
+
+                            }
+                            if (next_section_month == 10) {
+                                next_section_month = 11;
+
+                            }
+                            if (next_section_month == 12) {
+                                next_section_month = 1;
+                                next_section_year = next_section_year + 1;
+
+                            }
+                        }
+                    }
+                    contador_row = 0;
+                }
+                var found = false;
+
+                if (contAux < resto) {
+                    var temp_date2 = data.docs[contAux].date;
+                    var date02 = temp_date2.split("T");
+                    var date12 = date02[0].split("-");
+                    var _year2 = date12[0];
+                    var _month2 = date12[1];
+                    var _day2 = date12[2];
+                    var date22 = date02[1].split(".");
+                    var date32 = date22[0].split(":");
+                    var _hours2 = date32[0];
+                    var _minutes2 = date32[1];
+                    var _seconds2 = date32[2];
+
+                    /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
+                    //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
+                    if (_seconds > 54 && _minutes == 59 && _hours == 23) {
+                        var check_seconds = _seconds + 5 - 60;
+                        var check_minutes = 0;
+                        var check_hours = 0;
+                    }
+                    if (_seconds > 54 && _minutes == 59 && _hours != 23) {
+                        var check_seconds = _seconds + 5 - 60;
+                        var check_minutes = 0;
+                        var check_hours = _hours + 1;
+                    }
+                    if (_seconds > 54 && _minutes != 59 && _hours != 23) {
+                        var check_seconds = _seconds + 5 - 60;
+                        var check_minutes = _minutes + 1;
+                        var check_hours = _hours + 1;
+                    }
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    ///////////// CHECK de misma observacion  /////////////////////////////////////
+                    if (_year == _year2 && _month == _month2 && _day == _day2) {
+                        var temp_second = _seconds + 5;
+                        if (_hours == _hours2 && _minutes == _minutes2 && temp_second > _seconds2) {
+                            //Coincide observacion
+                            //contAux = contAux +1;
+                            found = true;
+                        } else {
+                            //no coincide observacion
+                            if (_seconds > 54 && _seconds2 < 5) {
+                                found = false;
+                            }
+                            else {
+                                contador_row = contador_row + 1;
+                                found = true;
+                            }
+
+                        }
+                        if (check_hours == _hours2 && check_minutes == _minutes2 && check_seconds > _seconds2 && found == false) {
+                            //coincide observacion
+                            //contAux = contAux +1;
+                            found = true;
+                        } else {
+                            //no coincide observacion
+                            //contador_row = contador_row +1;
+                            found = false;
+
+                        }
+                    }
+                    else {
+                        //no coincide
+                        //contador_row = contador_row +1;
+                        found = false;
+
+                    }
+                }
+                else {
+                    //no hay otra observacion para comparar con la anterior
+                }
+                //Se actualiza siguiente observaciones a analizar
+                //Si coinciden las 2 ultimas observaciones analizadas, Se pasa a analizar la siguiente observacion
+                if (found == true) {
+                    contAux = contAux + 1;
+                }
+                else {
+                    //si no coinciden las observaciones, por lo que son 2 distintas, se añade 1 al contador_row
+                    cont = contAux;
+                    contAux = contAux + 1;
+                    contador_row = contador_row + 1;
+
+                }
+            }
+            if (contador_row != 0) {
+                //ADDROW final de bucle
+            }
+            pagesCounter = pagesCounter + 1;
+            });
+            }
+
+        if (contador_row != 0) {
+            //ADDROW final de bucle
+        }
+    //});
     }
    /* while (elementCounter < resto) {
         var temp_country = data.docs[elementCounter].country;
