@@ -255,10 +255,10 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
 //Calcula el siguiente nivel de detalle
     if(_detail==30){
         next_section_minutes = next_section_minutes + 30;
-        if(next_section_minutes> 60){
+        if(next_section_minutes>= 60){
             next_section_minutes = next_section_minutes - 60;
             next_section_hours = next_section_hours + 1;
-            if(next_section_hours>24){
+            if(next_section_hours>=24){
                 next_section_hours = 0;
                 next_section_days = next_section_days +1;
                 if(next_section_days == 29 && next_section_month == 2){
@@ -317,7 +317,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
     }
     if(_detail==60){
         next_section_hours = next_section_hours + 1;
-        if(next_section_hours>24){
+        if(next_section_hours>=24){
             next_section_hours = 0;
             next_section_days = next_section_days +1;
             if(next_section_days == 29 && next_section_month == 2){
@@ -443,7 +443,8 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             var _hours = date3[0];
             var _minutes = date3[1];
             var _seconds = date3[2];
-            if(_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes){
+            //busca nueva seccion de grafica respecto a la ultima observacion
+            while(_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes){
                 //PETICION ADDROW
                 if(_detail==30){
                     next_section_minutes = next_section_minutes + 30;
@@ -656,21 +657,16 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 var found = false;
                 if(_year == _year2 && _month == _month2 && _day == _day2) {
                         var temp_second = _seconds + 5;
-                        if (_hours == _hours2 && _minutes == _minutes2 && temp_second > _seconds2) {
+                        //Analiza casos de dos observaciones, la primera de ellas con segundos que no sobrepasen los 60
+                        if (_hours == _hours2 && _minutes == _minutes2 && temp_second >= _seconds2 && temp_second <60) {
                             //Coincide observacion
                             //contAux = contAux +1;
                             found = true;
                         } else {
                             //no coincide observacion
-                            if(_seconds > 54 && _seconds2 < 5){
-                                found= false;
-                            }
-                            else{
-                                contador_row = contador_row +1;
-                                found=true;
-                            }
-
+                            found = false;
                         }
+                        //Analiza caso de dos observaciones, la primera de ellas, cercana al cambio de minuto, segundo >54
                         if (check_hours == _hours2 && check_minutes == _minutes2 && check_seconds > _seconds2 && found==false) {
                             //coincide observacion
                             //contAux = contAux +1;
