@@ -78,9 +78,9 @@
     <div class="row">
         <div class="col-md-3">
 
-            <h2>Observaciones por país</h2>
+            <h2>Actividad registrada</h2>
             <br>
-            <h4>Muestra las observaciones emitidas por los usuarios en cada pais </h4>
+            <h4>Estrellas avistadas durante un intervalo de tiempo</h4>
             <br>
             <form>
                 <div class="form-group">
@@ -446,6 +446,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             //busca nueva seccion de grafica respecto a la ultima observacion
             while(_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes){
                 //PETICION ADDROW
+                data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                 if(_detail==30){
                     next_section_minutes = next_section_minutes + 30;
                     if(next_section_minutes> 60){
@@ -703,6 +704,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         }
         if(contador_row != 0){
             //ADDROW final de bucle
+            data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
         }
     }
     else {
@@ -727,6 +729,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _seconds = date3[2];
                     while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                         //PETICION ADDROW
+                        data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                         if (_detail == 30) {
                             next_section_minutes = next_section_minutes + 30;
                             if (next_section_minutes > 60) {
@@ -1006,6 +1009,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 var _seconds = date3[2];
                 while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                     //PETICION ADDROW
+                    data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                     if (_detail == 30) {
                         next_section_minutes = next_section_minutes + 30;
                         if (next_section_minutes > 60) {
@@ -1264,14 +1268,11 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             }
             if (contador_row != 0) {
                 //ADDROW final de bucle
+                data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
             }
             pagesCounter = pagesCounter + 1;
             });
             }
-
-        if (contador_row != 0) {
-            //ADDROW final de bucle
-        }
     //});
     }
    /* while (elementCounter < resto) {
@@ -1293,10 +1294,11 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
 
         data.addColumn('date', 'Date');
         data.addColumn('number', 'Population');
+        getActivity();
         data.addRow([new Date(1300,1,1), 200]);
         data.addRows([
             [new Date(1400, 1, 1),  374],
-            [new Date(1500, 1, 1),  460],
+            /*[new Date(1500, 1, 1),  460],
             [new Date(1600, 1, 1),  579],
             [new Date(1700, 1, 1),  679],
             [new Date(1750, 1, 1),  770],
@@ -1364,21 +1366,21 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             [new Date(2004, 1, 1),  6396],
             [new Date(2005, 1, 1),  6473],
             [new Date(2006, 1, 1),  6551],
-            [new Date(2007, 1, 1),  6630],
+            [new Date(2007, 1, 1),  6630],*/
             [new Date(2008, 1, 1),  6709],
             [new Date(2009, 1, 1),  6788]
         ]);
 
-        var a= 6000;
+        var a= 50;
 
         var linearOptions = {
-            title: 'World Population Since 1400 A.D. in Linear Scale',
+            title: 'Numero de estrellas observadas',
             legend: 'none',
             hAxis: {
-                title: 'Date'
+                title: 'Fecha'
             },
             vAxis: {
-                title: 'Population (millions)',
+                title: 'Numero de estrellas',
                 ticks: [0, a/4, a/2, 3*a/4, a]
             }
         };
