@@ -247,20 +247,20 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
     var start_hours = date3[0];
     var start_minutes = date3[1];
     var start_seconds = date3[2];
-    var next_section_minutes_st = start_minutes;
-    var next_section_minutes = parseInt(next_section_minutes_st,10);
+    //var next_section_minutes_st = start_minutes;
+    var next_section_minutes = parseInt(start_minutes,10);
     alert("minutos: "+next_section_minutes);
-    var next_section_hours_st = start_hours;
-    var next_section_hours = parseInt(next_section_hours_st,10);
+    //var next_section_hours_st = start_hours;
+    var next_section_hours = parseInt(start_hours,10);
     alert("horas: "+next_section_hours);
-    var next_section_days_st = start_day;
-    var next_section_days = parseInt(next_section_days_st,10);
+    //var next_section_days_st = start_day;
+    var next_section_days = parseInt(start_day,10);
     alert("dia: "+next_section_days);
-    var next_section_month_st = start_month;
-    var next_section_month = parseInt(next_section_month_st,10);
+    //var next_section_month_st = start_month;
+    var next_section_month = parseInt(start_month,10);
     alert("month: "+next_section_month);
-    var next_section_year_st = start_year;
-    var next_section_year = parseInt(next_section_year_st,10);
+    //var next_section_year_st = start_year;
+    var next_section_year = parseInt(start_year,10);
     alert("year: "+next_section_year);
 //Calcula el siguiente nivel de detalle
     if(_detail==30){
@@ -466,10 +466,12 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             var _seconds_st = date3[2];
             var _seconds = parseInt(_seconds_st,10);
             //busca nueva seccion de grafica respecto a la ultima observacion
+            alert(_year +">="+ next_section_year + " "+ _month + " >="+ next_section_month+ " "+_day+">=" + next_section_days +" "+ _hours +">="+ next_section_hours+" "+ _minutes+ ">"+ next_section_minutes);
             while(_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes){
                 //PETICION ADDROW
-                alert("bucle while");
-                data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
+
+                alert("addrow");
+                //data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                 if(_detail==30){
                     next_section_minutes = next_section_minutes + 30;
                     if(next_section_minutes> 60){
@@ -735,7 +737,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         if(contador_row != 0){
             //ADDROW final de bucle
             alert("peticion addrow"+ "año: "+ next_section_year+"mes:" + next_section_month+"dia: "+next_section_days+"horas: "+next_section_hours+"minutos: "+next_section_minutes);
-            data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
+            //data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
         }
     }
     else {
@@ -750,14 +752,20 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     temp_date = data.docs[cont].date;
                     date0 = temp_date.split("T");
                     date1 = date0[0].split("-");
-                    var _year = date1[0];
-                    var _month = date1[1];
-                    var _day = date1[2];
+                    var _year_st = date1[0];
+                    var _year = parseInt(_year_st,10);
+                    var _month_st = date1[1];
+                    var _month = parseInt(_month_st,10);
+                    var _day_st = date1[2];
+                    var _day = parseInt(_day_st,10);
                     date2 = date0[1].split(".");
                     date3 = date2[0].split(":");
-                    var _hours = date3[0];
-                    var _minutes = date3[1];
-                    var _seconds = date3[2];
+                    var _hours_st = date3[0];
+                    var _hours = parseInt(_hours_st,10);
+                    var _minutes_st = date3[1];
+                    var _minutes = parseInt(_minutes_st,10);
+                    var _seconds_st = date3[2];
+                    var _seconds = parseInt(_seconds_st,10);
                     while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                         //PETICION ADDROW
                         data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
@@ -943,14 +951,20 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                         var temp_date2 = data.docs[contAux].date;
                         var date02 = temp_date2.split("T");
                         var date12 = date02[0].split("-");
-                        var _year2 = date12[0];
-                        var _month2 = date12[1];
-                        var _day2 = date12[2];
+                        var _year2_st = date12[0];
+                        var _year2 = parseInt(_year2_st,10);
+                        var _month2_st = date12[1];
+                        var _month2 = parseInt(_month2_st,10);
+                        var _day2_st = date12[2];
+                        var _day2 = parseInt(_day2_st,10);
                         var date22 = date02[1].split(".");
                         var date32 = date22[0].split(":");
-                        var _hours2 = date32[0];
-                        var _minutes2 = date32[1];
-                        var _seconds2 = date32[2];
+                        var _hours2_st = date32[0];
+                        var _hours2 = parseInt(_hours2_st,10);
+                        var _minutes2_st = date32[1];
+                        var _minutes2 = parseInt(_minutes2_st,10);
+                        var _seconds2_st = date32[2];
+                        var _seconds2 = parseInt(_seconds2_st,10);
 
                         /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
                         //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
@@ -1030,14 +1044,20 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 temp_date = data.docs[cont].date;
                 date0 = temp_date.split("T");
                 date1 = date0[0].split("-");
-                var _year = date1[0];
-                var _month = date1[1];
-                var _day = date1[2];
+                var _year_st = date1[0];
+                var _year = parseInt(_year_st,10);
+                var _month_st = date1[1];
+                var _month = parseInt(_month_st,10);
+                var _day_st = date1[2];
+                var _day = parseInt(_day_st,10);
                 date2 = date0[1].split(".");
                 date3 = date2[0].split(":");
-                var _hours = date3[0];
-                var _minutes = date3[1];
-                var _seconds = date3[2];
+                var _hours_st = date3[0];
+                var _hours = parseInt(_hours_st,10);
+                var _minutes_st = date3[1];
+                var _minutes = parseInt(_minutes_st,10);
+                var _seconds_st = date3[2];
+                var _seconds = parseInt(_seconds_st,10);
                 while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                     //PETICION ADDROW
                     data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
@@ -1223,14 +1243,20 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var temp_date2 = data.docs[contAux].date;
                     var date02 = temp_date2.split("T");
                     var date12 = date02[0].split("-");
-                    var _year2 = date12[0];
-                    var _month2 = date12[1];
-                    var _day2 = date12[2];
+                    var _year2_st = date12[0];
+                    var _year2 = parseInt(_year2_st,10);
+                    var _month2_st = date12[1];
+                    var _month2 = parseInt(_month2_st,10);
+                    var _day2_st = date12[2];
+                    var _day2 = parseInt(_day2_st,10);
                     var date22 = date02[1].split(".");
                     var date32 = date22[0].split(":");
-                    var _hours2 = date32[0];
-                    var _minutes2 = date32[1];
-                    var _seconds2 = date32[2];
+                    var _hours2_st = date32[0];
+                    var _hours2 = parseInt(_hours2_st,10);
+                    var _minutes2_st = date32[1];
+                    var _minutes2 = parseInt(_minutes2_st,10);
+                    var _seconds2_st = date32[2];
+                    var _seconds2 = parseInt(_seconds2_st,10);
 
                     /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
                     //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
@@ -1327,11 +1353,11 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         getActivity();
 
         //data.addRow([new Date(1400,1,1,1,1), 4]);
-        /*data.addRows([
+        data.addRows([
             [new Date(1400, 1, 1,4,1),  37],
             [new Date(1400, 1, 2,15,1),  11],
             [new Date(1400, 1, 2,23,1),  11]
-        ]);*/
+        ]);
         /*var _start_date_draw= $('#start_date').val();
         var _end_date_draw= $('#end_date').val();
         if(_start_date_draw != null && _end_date_draw != null){
