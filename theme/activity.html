@@ -202,6 +202,14 @@ window.cookieconsent_options = {"message":"This website uses cookies to ensure y
     var $minutes = [];
     var $contador = [];
     var array_iteraciones = 0;
+    var ano_inicio = 0;
+    var mes_inicio = 0;
+    var dia_inicio = 0;
+    var hora_inicio = 0;
+    var ano_final = 0;
+    var mes_final = 0;
+    var dia_final = 0;
+    var hora_final = 0;
 
 function getActivity() {
 alert("funcion getActivity");
@@ -260,15 +268,19 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
     //alert("minutos: "+next_section_minutes);
     //var next_section_hours_st = start_hours;
     var next_section_hours = parseInt(start_hours,10);
+    hora_inicio = next_section_hours;
     //alert("horas: "+next_section_hours);
     //var next_section_days_st = start_day;
     var next_section_days = parseInt(start_day,10);
+    dia_inicio = next_section_days;
     //alert("dia: "+next_section_days);
     //var next_section_month_st = start_month;
     var next_section_month = parseInt(start_month,10);
+    mes_inicio = next_section_month;
     //alert("month: "+next_section_month);
     //var next_section_year_st = start_year;
     var next_section_year = parseInt(start_year,10);
+    ano_inicio = next_section_year;
     //alert("year: "+next_section_year);
 //Calcula el siguiente nivel de detalle
     if(_detail==30){
@@ -477,7 +489,9 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             //alert(_year +">="+ next_section_year + " "+ _month + " >="+ next_section_month+ " "+_day+">=" + next_section_days +" "+ _hours +">="+ next_section_hours+" "+ _minutes+ ">"+ next_section_minutes);
             while(_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes){
                 //PETICION ADDROW
+
                 $year[array_iteraciones]= next_section_year;
+                alert($year[array_iteraciones]);
                 $month[array_iteraciones] = next_section_month;
                 $day[array_iteraciones] = next_section_days;
                 $hour[array_iteraciones] = next_section_hours;
@@ -758,9 +772,15 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             $minutes[array_iteraciones] = next_section_minutes;
             $contador[array_iteraciones] = contador_row;
             array_iteraciones = array_iteraciones +1;
+            ano_final = next_section_year;
+            mes_final = next_section_month;
+            dia_final = next_section_days;
+            hora_final = next_section_hours;
             //alert("peticion addrow"+ "año: "+ next_section_year+"mes:" + next_section_month+"dia: "+next_section_days+"horas: "+next_section_hours+"minutos: "+next_section_minutes+"contador: "+contador_row);
             //data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
         }
+        alert(array_iteraciones);
+        drawChart();
     }
     else {
         //Page > 1
@@ -790,6 +810,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _seconds = parseInt(_seconds_st,10);
                     while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                         //PETICION ADDROW
+                        //TODO
                         data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                         if (_detail == 30) {
                             next_section_minutes = next_section_minutes + 30;
@@ -1082,6 +1103,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 var _seconds = parseInt(_seconds_st,10);
                 while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                     //PETICION ADDROW
+                    //TODO
                     data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                     if (_detail == 30) {
                         next_section_minutes = next_section_minutes + 30;
@@ -1347,6 +1369,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             }
             if (contador_row != 0) {
                 //ADDROW final de bucle
+                //TODO
                 data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
             }
             pagesCounter = pagesCounter + 1;
@@ -1361,8 +1384,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         elementCounter = elementCounter + 1;
     }*/
 });
-    alert("llamado drawChart");
-drawChart();
+
 }
 
     google.charts.load('current', {'packages':['corechart', 'line']});
@@ -1397,27 +1419,30 @@ drawChart();
             alert(start_day);
         }*/
         var a= 50;
-
+        for(var i = 0; i<array_iteraciones;i++){
+            data.addRow([new Date($year[i],$month[i],$day[i],$hour[i],$minutes[i]), $contador[i]]);
+        }
         alert($year[0]+" "+$month[0]+" "+$day[0]+" "+$hour[0]+" "+$minutes[0]+" "+ $contador[0]);
-        data.addRow([new Date($year[0],$month[0],$day[0],$hour[0],$minutes[0]), $contador[0]]);
-        data.addRow([new Date($year[1],$month[1],$day[1],$hour[1],$minutes[1]), $contador[1]]);
+        //data.addRow([new Date($year[0],$month[0],$day[0],$hour[0],$minutes[0]), $contador[0]]);
+        //data.addRow([new Date($year[1],$month[1],$day[1],$hour[1],$minutes[1]), $contador[1]]);
         //data.addRow([new Date(1400,1,1,1,1), 4]);
-        /*var linearOptions = {
+        var linearOptions = {
             title: 'Numero de estrellas observadas',
             legend: 'none',
             hAxis: {
                 title: 'Fecha',
-                ticks: [new Date(1400,1,1), new Date(1400,1,3)]
+                ticks: [new Date(ano_inicio,mes_inicio,dia_inicio,hora_inicio), new Date(ano_final,mes_final,dia_final,hora_final)]
             },
             vAxis: {
                 title: 'Numero de estrellas',
                 ticks: [0, a/4, a/2, 3*a/4, a]
             }
-        };*/
+        };
 
         var linearChart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
-        linearChart.draw(data);
+        linearChart.draw(data, linearOptions);
+
     }
 
 </script>
