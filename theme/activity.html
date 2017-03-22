@@ -195,12 +195,12 @@
     }
 window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
 
-    var $year = new Array();
-    var $month = new Array();
-    var $day = new Array();
-    var $hour = new Array();
-    var $minutes = new Array();
-    var $contador = new Array();
+    var $year = [];
+    var $month = [];
+    var $day = [];
+    var $hour = [];
+    var $minutes = [];
+    var $contador = [];
     var array_iteraciones = 0;
 
 function getActivity() {
@@ -1361,9 +1361,10 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         elementCounter = elementCounter + 1;
     }*/
 });
+    alert("llamado drawChart");
 drawChart();
 }
-//var res = str.split("-",1);
+
     google.charts.load('current', {'packages':['corechart', 'line']});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -1415,7 +1416,7 @@ drawChart();
         };*/
 
         var linearChart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        
+
         linearChart.draw(data);
     }
 
