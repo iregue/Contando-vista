@@ -491,7 +491,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 //PETICION ADDROW
 
                 $year[array_iteraciones]= next_section_year;
-                alert($year[array_iteraciones]);
+                //alert($year[array_iteraciones]);
                 $month[array_iteraciones] = next_section_month;
                 $day[array_iteraciones] = next_section_days;
                 $hour[array_iteraciones] = next_section_hours;
@@ -779,7 +779,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             //alert("peticion addrow"+ "año: "+ next_section_year+"mes:" + next_section_month+"dia: "+next_section_days+"horas: "+next_section_hours+"minutos: "+next_section_minutes+"contador: "+contador_row);
             //data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
         }
-        alert(array_iteraciones);
+        //alert(array_iteraciones);
         drawChart();
     }
     else {
@@ -810,8 +810,15 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _seconds = parseInt(_seconds_st,10);
                     while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                         //PETICION ADDROW
-                        //TODO
-                        data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
+                        $year[array_iteraciones]= next_section_year;
+                        //alert($year[array_iteraciones]);
+                        $month[array_iteraciones] = next_section_month;
+                        $day[array_iteraciones] = next_section_days;
+                        $hour[array_iteraciones] = next_section_hours;
+                        $minutes[array_iteraciones] = next_section_minutes;
+                        $contador[array_iteraciones] = contador_row;
+                        array_iteraciones = array_iteraciones + 1;
+                        //data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                         if (_detail == 30) {
                             next_section_minutes = next_section_minutes + 30;
                             if (next_section_minutes > 60) {
@@ -1103,8 +1110,15 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 var _seconds = parseInt(_seconds_st,10);
                 while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                     //PETICION ADDROW
-                    //TODO
-                    data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
+                    $year[array_iteraciones]= next_section_year;
+                    //alert($year[array_iteraciones]);
+                    $month[array_iteraciones] = next_section_month;
+                    $day[array_iteraciones] = next_section_days;
+                    $hour[array_iteraciones] = next_section_hours;
+                    $minutes[array_iteraciones] = next_section_minutes;
+                    $contador[array_iteraciones] = contador_row;
+                    array_iteraciones = array_iteraciones + 1;
+                    //data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
                     if (_detail == 30) {
                         next_section_minutes = next_section_minutes + 30;
                         if (next_section_minutes > 60) {
@@ -1369,10 +1383,21 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             }
             if (contador_row != 0) {
                 //ADDROW final de bucle
-                //TODO
-                data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
+                $year[array_iteraciones]= next_section_year;
+                $month[array_iteraciones] = next_section_month;
+                $day[array_iteraciones] = next_section_days;
+                $hour[array_iteraciones] = next_section_hours;
+                $minutes[array_iteraciones] = next_section_minutes;
+                $contador[array_iteraciones] = contador_row;
+                array_iteraciones = array_iteraciones +1;
+                ano_final = next_section_year;
+                mes_final = next_section_month;
+                dia_final = next_section_days;
+                hora_final = next_section_hours;
+                //data.addRow([new Date(next_section_year,next_section_month,next_section_days,next_section_hours,next_section_minutes), contador_row]);
             }
             pagesCounter = pagesCounter + 1;
+                drawChart();
             });
             }
     //});
@@ -1392,7 +1417,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
 
 
     function drawChart() {
-        alert("funcion drawChart");
+        //alert("funcion drawChart");
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Date');
         data.addColumn('number', 'Bólidos');
@@ -1422,7 +1447,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         for(var i = 0; i<array_iteraciones;i++){
             data.addRow([new Date($year[i],$month[i],$day[i],$hour[i],$minutes[i]), $contador[i]]);
         }
-        alert($year[0]+" "+$month[0]+" "+$day[0]+" "+$hour[0]+" "+$minutes[0]+" "+ $contador[0]);
+        //alert($year[0]+" "+$month[0]+" "+$day[0]+" "+$hour[0]+" "+$minutes[0]+" "+ $contador[0]);
         //data.addRow([new Date($year[0],$month[0],$day[0],$hour[0],$minutes[0]), $contador[0]]);
         //data.addRow([new Date($year[1],$month[1],$day[1],$hour[1],$minutes[1]), $contador[1]]);
         //data.addRow([new Date(1400,1,1,1,1), 4]);
