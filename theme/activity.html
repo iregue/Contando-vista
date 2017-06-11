@@ -680,7 +680,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             }
             if(contAux < resto){
                     var temp_date2 = data.docs[contAux].date;
-                    var date02 = temp_date2.split("T");
+                    /*var date02 = temp_date2.split("T");
                     var date12 = date02[0].split("-");
                     var _year2_st = date12[0];
                     var _year2 = parseInt(_year2_st,10);
@@ -695,9 +695,10 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _minutes2_st = date32[1];
                     var _minutes2 = parseInt(_minutes2_st,10);
                     var _seconds2_st = date32[2];
-                    var _seconds2 = parseInt(_seconds2_st,10);
+                    var _seconds2 = parseInt(_seconds2_st,10);*/
 
-
+                var found = observationFilter(temp_date,temp_date2);
+                /*
                 /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
                 //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
                     if(_seconds > 54 && _minutes ==59 && _hours ==23){
@@ -745,7 +746,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                         //no coincide
                     //contador_row = contador_row +1;
                     found = false;
-                }
+                }*/
             }
             else{
                 //no hay otra observacion para comparar con la anterior
@@ -995,11 +996,11 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                         }
                         contador_row = 0;
                     }
-                    var found = false;
+                    //var found = false;
 
                     if (contAux < limit) {
                         var temp_date2 = data.docs[contAux].date;
-                        var date02 = temp_date2.split("T");
+                        /*var date02 = temp_date2.split("T");
                         var date12 = date02[0].split("-");
                         var _year2_st = date12[0];
                         var _year2 = parseInt(_year2_st,10);
@@ -1014,8 +1015,11 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                         var _minutes2_st = date32[1];
                         var _minutes2 = parseInt(_minutes2_st,10);
                         var _seconds2_st = date32[2];
-                        var _seconds2 = parseInt(_seconds2_st,10);
+                        var _seconds2 = parseInt(_seconds2_st,10);*/
 
+                        var found =observationFilter(temp_date, temp_date2);
+
+                        /*
                         /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
                         //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
                         if (_seconds > 54 && _minutes == 59 && _hours == 23) {
@@ -1063,7 +1067,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                             //contador_row = contador_row +1;
                             found = false;
 
-                        }
+                        }*/
                     }
                     else {
                         //no hay otra observacion para comparar con la anterior
@@ -1295,11 +1299,11 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     }
                     contador_row = 0;
                 }
-                var found = false;
+                //var found = false;
 
                 if (contAux < resto) {
                     var temp_date2 = data.docs[contAux].date;
-                    var date02 = temp_date2.split("T");
+                    /*var date02 = temp_date2.split("T");
                     var date12 = date02[0].split("-");
                     var _year2_st = date12[0];
                     var _year2 = parseInt(_year2_st,10);
@@ -1314,8 +1318,10 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _minutes2_st = date32[1];
                     var _minutes2 = parseInt(_minutes2_st,10);
                     var _seconds2_st = date32[2];
-                    var _seconds2 = parseInt(_seconds2_st,10);
+                    var _seconds2 = parseInt(_seconds2_st,10);*/
 
+                    var found = observationFilter(temp_date,temp_date2);
+                    /*
                     /////////////////////////////////CHECK hora en cambios de minutos horas y dias///////////////////////
                     //Se suma 5 seg para comprobar casos iguales y re corrigue hora en caso de sobrepasar los 60seg, 60min, 24h
                     if (_seconds > 54 && _minutes == 59 && _hours == 23) {
@@ -1363,7 +1369,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                         //contador_row = contador_row +1;
                         found = false;
 
-                    }
+                    }*/
                 }
                 else {
                     //no hay otra observacion para comparar con la anterior
@@ -1410,6 +1416,17 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
     }*/
 });
 
+}
+
+function observationFilter(date1,date2){
+    var fecha1 = new Date(date1);
+    var fecha2 = new Date(date2);
+    var millis_fecha1 = fecha1.getTime();
+    var millis_fecha2 = fecha2.getTime();
+    if(millis_fecha1 + 5000>= millis_fecha2){
+        return true;
+    }
+    return false;
 }
 
     google.charts.load('current', {'packages':['corechart', 'line']});
