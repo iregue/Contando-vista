@@ -87,6 +87,7 @@
                         <label for="evento">Selecciona evento</label>
                         <select class="form-control" id="evento">
                             <option value="Geminidas16">Geminidas 2016</option>
+                            <option value="DemoPais">Demo 2017</option>
                             <option>Perseidas16</option>
                         </select>
                     </div>
@@ -572,14 +573,13 @@
         n_Zambia = 0;
         n_Zimbabwe = 0;
         non_found = 0;
-        drawRegionsMap();
 
 
 
     }
 
     function getData() {
-    clearAl();
+    //clearAl();
     var eventoactual = $('#evento').val();
         //alert("evento actual: "+ eventoactual);
         //alert("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date);
@@ -608,7 +608,7 @@
             }
             else {
                 while (pagesCounter < pages) {
-                    $.get("http://localhost/api/observations?event="+eventoactual+ "&pages=" + pagesCounter, function (data) {
+                    $.get("http://localhost/api/observations?event="+eventoactual+ "&page=" + pagesCounter, function (data) {
                         var elementCounter = 0;
                         while (elementCounter < limit) {
                             var temp_country = data.docs[elementCounter].country;
@@ -620,8 +620,10 @@
                     pagesCounter = pagesCounter + 1;
                 }
                 while (pagesCounter == pages) {
-                    $.get("http://localhost/api/observations?event=" + eventoactual +"&pages=" + pagesCounter, function (data) {
+                    //alert(n_Spain);
+                    $.get("http://localhost/api/observations?event=" + eventoactual +"&page=" + pagesCounter, function (data) {
                     //$.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&pages=" + pagesCounter, function (data) {
+
                         var elementCounter = 0;
                         while (elementCounter < resto) {
                             var temp_country = data.docs[elementCounter].country;
@@ -631,12 +633,16 @@
                         }
                     });
                     pagesCounter = pagesCounter + 1;//Romper while
+                    drawRegionsMap();
                 }
+                //drawRegionsMap();
+                //return;
             }//end else
+
         drawRegionsMap();
         });//end Get
 
-
+        //drawRegionsMap();
     }//end getData
     //Switch case look for a country
 function foundCountry(country) {

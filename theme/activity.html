@@ -115,7 +115,7 @@
                     <button type="button" onclick="getActivity()" class="btn btn-danger btn-lg">Enviar</button>
                 </div>
                 <div class="row col-xs-offset-1"><br>
-                    <button type="button" onclick="clearAl()" class="btn btn-primary btn-md">Limpiar mapa</button>
+                    <button type="button" onclick="clearAll()" class="btn btn-primary btn-md">Limpiar mapa</button>
                 </div>
             </form>
             </div>
@@ -211,8 +211,26 @@ window.cookieconsent_options = {"message":"This website uses cookies to ensure y
     var dia_final = 0;
     var hora_final = 0;
 
+    function clearAll(){
+        $year = [];
+        $month = [];
+        $day = [];
+        $hour = [];
+        $minutes = [];
+        $contador = [];
+        array_iteraciones = 0;
+        ano_inicio = 0;
+        mes_inicio = 0;
+        dia_inicio = 0;
+        hora_inicio = 0;
+        ano_final = 0;
+        mes_final = 0;
+        dia_final = 0;
+        hora_final = 0;
+    }
+
 function getActivity() {
-alert("funcion getActivity");
+
 
 var _latitude= $('#latitude').val();
 var _longitude= $('#longitude').val();
@@ -463,11 +481,13 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         }
     }
     var contador_row = 0;
+    //alert(pages);
     if(pages==1){
         //alert("paginas = 1");
         var cont = 0;
         var contAux = cont +1;
-        while (cont < resto) {
+        //alert("resto: "+resto);
+        while (cont < total) {
              temp_date = data.docs[cont].date;
              date0 = temp_date.split("T");
              date1 = date0[0].split("-");
@@ -489,7 +509,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             //alert(_year +">="+ next_section_year + " "+ _month + " >="+ next_section_month+ " "+_day+">=" + next_section_days +" "+ _hours +">="+ next_section_hours+" "+ _minutes+ ">"+ next_section_minutes);
             while(_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes){
                 //PETICION ADDROW
-
+                //alert("addrow"+ next_section_hours + next_section_minutes);
                 $year[array_iteraciones]= next_section_year;
                 //alert($year[array_iteraciones]);
                 $month[array_iteraciones] = next_section_month;
