@@ -811,11 +811,16 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         //while (pagesCounter < pages) {
         var i;
         for (i =1; i< pages;i++) {
-            //alert(pagesCounter +"<"+ pages);
+            //alert(i +"<"+ pages);
+            //alert("contadores a 0");
 
             $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + i, function (data) {
+                
+                cont = 0;
+                contAux = cont + 1;
 
                 while (cont < limit) {
+                    //alert(cont+ "<" +limit);
                     temp_date = data.docs[cont].date;
                     date0 = temp_date.split("T");
                     date1 = date0[0].split("-");
@@ -833,7 +838,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     var _minutes = parseInt(_minutes_st,10);
                     var _seconds_st = date3[2];
                     var _seconds = parseInt(_seconds_st,10);
-                    alert(_year +">="+ next_section_year + " "+ _month + " >="+ next_section_month+ " "+_day+">=" + next_section_days +" "+ _hours +">="+ next_section_hours+" "+ _minutes+ ">"+ next_section_minutes);
+                    //alert(_year +">="+ next_section_year + " "+ _month + " >="+ next_section_month+ " "+_day+">=" + next_section_days +" "+ _hours +">="+ next_section_hours+" "+ _minutes+ ">"+ next_section_minutes);
                     while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                         //PETICION ADDROW
                         alert("peticion addrow"+ pagesCounter);
@@ -1102,6 +1107,10 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                     //Si coinciden las 2 ultimas observaciones analizadas, Se pasa a analizar la siguiente observacion
                     if (found == true) {
                         contAux = contAux + 1;
+                        if(contAux >= limit){
+                            cont = limit;
+                            //alert("CONT = LIMIT")
+                        }
                     }
                     else {
                         //si no coinciden las observaciones, por lo que son 2 distintas, se añade 1 al contador_row
@@ -1111,7 +1120,6 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
 
                     }
                 }//end while
-                alert("incremento pages");
                 pagesCounter = pagesCounter +1;
                 cont = 0;
                 contAux = cont + 1;
@@ -1122,11 +1130,12 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
         //ultima iteracion
 
         //if (pagesCounter == pages) {
-
+            //alert("LAST");
             $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + pages, function (data) {
-
-            var cont = 0;
-            var contAux = cont + 1;
+            //alert("ENTRA GET");
+            cont = 0;
+            contAux = cont + 1;
+                //alert(cont +"< "+ resto);
             while (cont < resto) {
                 temp_date = data.docs[cont].date;
                 date0 = temp_date.split("T");
@@ -1147,7 +1156,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
                 var _seconds = parseInt(_seconds_st,10);
                 while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                     //PETICION ADDROW
-                    alert("addrow last iterations");
+                    //alert("addrow last iterations");
                     $year[array_iteraciones]= next_section_year;
                     //alert($year[array_iteraciones]);
                     $month[array_iteraciones] = next_section_month;
@@ -1423,7 +1432,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             }
             if (contador_row != 0) {
                 //ADDROW final de
-                alert("addrow END");
+                //alert("addrow END");
                 $year[array_iteraciones]= next_section_year;
                 $month[array_iteraciones] = next_section_month;
                 $day[array_iteraciones] = next_section_days;
@@ -1440,7 +1449,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             pagesCounter = pagesCounter + 1;
                 drawChart();
             });
-            //}
+        //}
     //});
     }
    /* while (elementCounter < resto) {
