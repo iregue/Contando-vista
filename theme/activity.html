@@ -169,6 +169,7 @@
 <script src="assets/js/jquery.prettyPhoto.js"></script>
 <script src="assets/js/jquery.isotope.min.js"></script>
 <script src="assets/js/custom.js"></script>
+<script src="assets/js/config.js"></script>
 <script src="assets/js/jquery.cookie.js"></script>
 
 <script>
@@ -262,7 +263,7 @@ $.cookie('latitude3', _latitude);
     //2016-12-22T16:42:55.929Z
 
 
-$.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date, function (data) {
+$.get("http://"+ADDR_SERV+"/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date, function (data) {
     //alert("start");
 
     var total = data.total;
@@ -814,8 +815,8 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
             //alert(i +"<"+ pages);
             //alert("contadores a 0");
 
-            $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + i, function (data) {
-                
+            $.get("http://"+ADDR_SERV+"/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + i, function (data) {
+
                 cont = 0;
                 contAux = cont + 1;
 
@@ -1131,7 +1132,7 @@ $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitud
 
         //if (pagesCounter == pages) {
             //alert("LAST");
-            $.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + pages, function (data) {
+            $.get("http://"+ADDR_SERV+"/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&page=" + pages, function (data) {
             //alert("ENTRA GET");
             cont = 0;
             contAux = cont + 1;

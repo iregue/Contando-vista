@@ -152,6 +152,7 @@
     <script src="assets/js/jquery.prettyPhoto.js"></script>
     <script src="assets/js/jquery.isotope.min.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="assets/js/config.js"></script>
     <script src="assets/js/jquery.cookie.js"></script>
 
     <script>
@@ -584,7 +585,7 @@
         //alert("evento actual: "+ eventoactual);
         //alert("http://localhost/api/observations?lat="+ _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date);
 
-        $.get("http://localhost/api/observations?event="+ eventoactual, function( data ) {
+        $.get("http://"+ADDR_SERV+"/api/observations?event="+ eventoactual, function( data ) {
             //var a = data.docs[0].date;
             //var b = data.docs[1].date;
             //alert("get init");
@@ -608,7 +609,7 @@
             }
             else {
                 while (pagesCounter < pages) {
-                    $.get("http://localhost/api/observations?event="+eventoactual+ "&page=" + pagesCounter, function (data) {
+                    $.get("http://"+ADDR_SERV+"/api/observations?event="+eventoactual+ "&page=" + pagesCounter, function (data) {
                         var elementCounter = 0;
                         while (elementCounter < limit) {
                             var temp_country = data.docs[elementCounter].country;
@@ -621,7 +622,7 @@
                 }
                 while (pagesCounter == pages) {
                     //alert(n_Spain);
-                    $.get("http://localhost/api/observations?event=" + eventoactual +"&page=" + pagesCounter, function (data) {
+                    $.get("http://"+ADDR_SERV+"/api/observations?event=" + eventoactual +"&page=" + pagesCounter, function (data) {
                     //$.get("http://localhost/api/observations?lat=" + _latitude + "&lon=" + _longitude + "&distance=" + _distance + "&startdate=" + _start_date + "&enddate=" + _end_date + "&pages=" + pagesCounter, function (data) {
 
                         var elementCounter = 0;

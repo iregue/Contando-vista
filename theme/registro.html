@@ -137,6 +137,7 @@
 <script src="assets/js/jquery.prettyPhoto.js"></script>
 <script src="assets/js/jquery.isotope.min.js"></script>
 <script src="assets/js/custom.js"></script>
+<script src="assets/js/config.js"></script>
 
 <script>
     var newValor = 0;
@@ -153,7 +154,7 @@
         }
         else
         {
-            $.post("http://localhost/api/observations/", {lat:$.cookie('latitude'),lon:$.cookie('longitude'),country:$.cookie('pais')},function(){
+            $.post("http://"+ADDR_SERV+"/api/observations/", {lat:$.cookie('latitude'),lon:$.cookie('longitude'),country:$.cookie('pais')},function(){
             })
             .done(function () {
                 newValor = newValor + 1;
