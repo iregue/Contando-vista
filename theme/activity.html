@@ -228,11 +228,12 @@ window.cookieconsent_options = {"message":"This website uses cookies to ensure y
         mes_final = 0;
         dia_final = 0;
         hora_final = 0;
+        drawChart();
     }
 
 function getActivity() {
 
-
+clearAll();
 var _latitude= $('#latitude').val();
 var _longitude= $('#longitude').val();
 var _distance= $('#distance').val();
@@ -842,7 +843,7 @@ $.get("http://"+ADDR_SERV+"/api/observations?lat=" + _latitude + "&lon=" + _long
                     //alert(_year +">="+ next_section_year + " "+ _month + " >="+ next_section_month+ " "+_day+">=" + next_section_days +" "+ _hours +">="+ next_section_hours+" "+ _minutes+ ">"+ next_section_minutes);
                     while (_year >= next_section_year && _month >= next_section_month && _day >= next_section_days && _hours >= next_section_hours && _minutes > next_section_minutes) {
                         //PETICION ADDROW
-                        alert("peticion addrow"+ pagesCounter);
+                        //alert("peticion addrow"+ pagesCounter);
                         $year[array_iteraciones]= next_section_year;
                         //alert($year[array_iteraciones]);
                         $month[array_iteraciones] = next_section_month;
